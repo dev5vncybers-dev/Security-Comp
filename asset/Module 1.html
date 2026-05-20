@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Module 1 - 716479</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #1f2933;
+      --muted: #667085;
+      --line: #d6dbe3;
+      --accent: #2563eb;
+      --accent-soft: #e8f0ff;
+      --ok: #15803d;
+      --bad: #b42318;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .bar {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .status {
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .question {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .start-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+
+    .start-panel h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .start-panel p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .question-title {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .number {
+      flex: 0 0 auto;
+      min-width: 34px;
+      color: var(--accent);
+    }
+
+    .options {
+      display: grid;
+      gap: 8px;
+    }
+
+    label.option {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 10px 12px;
+      cursor: pointer;
+      background: #fff;
+    }
+
+    label.option:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    label.option.selected {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    label.option.correct {
+      border-color: var(--ok);
+      background: #eaf8ef;
+    }
+
+    label.option.wrong {
+      border-color: var(--bad);
+      background: #fff0ee;
+    }
+
+    input[type="radio"] {
+      margin-top: 4px;
+    }
+
+    .actions {
+      position: sticky;
+      bottom: 0;
+      background: rgba(246, 247, 249, 0.96);
+      border-top: 1px solid var(--line);
+      padding: 14px 0;
+      margin-top: 20px;
+    }
+
+    .actions-inner {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      border-radius: 7px;
+      padding: 10px 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #fff;
+      color: var(--accent);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 110px;
+      margin-top: 12px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 13px;
+      resize: vertical;
+    }
+
+    .result {
+      margin-top: 12px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 640px) {
+      .bar {
+        align-items: flex-start;
+      }
+
+      h1 {
+        font-size: 18px;
+      }
+
+      .question {
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <h1 id="quizTitle">Security Quiz</h1>
+      <div class="status">
+        <span>Code: <strong id="quizCode"></strong></span>
+        <span><span id="answeredCount">0</span>/<span id="totalCount">0</span> answered</span>
+        <span>Time: <strong id="timerText">00:00:00</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="start-panel" id="startPanel">
+      <h2 id="startTitle"></h2>
+      <p>Ma de: <strong id="startCode"></strong> · So cau: <strong id="startTotal"></strong></p>
+      <button type="button" id="startButton">Bat dau lam bai</button>
+    </section>
+
+    <form id="quizForm" class="hidden"></form>
+
+    <section class="actions hidden" id="actionsPanel">
+      <div class="actions-inner">
+        <button type="button" id="gradeButton">Chấm bài</button>
+        <button type="button" class="secondary" id="exportButton">Xuất chuỗi kết quả</button>
+        <button type="button" class="secondary" id="copyButton">Copy chuỗi</button>
+        <button type="button" class="secondary" id="resetButton">Làm lại</button>
+      </div>
+      <div class="result" id="scoreText"></div>
+      <textarea id="exportText" readonly placeholder="Chuỗi kết quả sẽ hiện ở đây sau khi bấm Xuất chuỗi kết quả."></textarea>
+    </section>
+  </main>
+
+  <script>
+    const quizName = "Module 1";
+    const quizCode = "716479";
+    const questions = [{"question": "Which control category includes firewalls, antivirus, and operating system access controls?", "options": {"A": "Physical", "B": "Technical", "C": "Operational", "D": "Managerial"}, "answer": "B"}, {"question": "Which control category is associated with security policies and standard operating procedures?", "options": {"A": "Managerial", "B": "Physical", "C": "Technical", "D": "Detective"}, "answer": "A"}, {"question": "Which control category is implemented by people rather than systems?", "options": {"A": "Cryptographic", "B": "Operational", "C": "Physical", "D": "Technical"}, "answer": "B"}, {"question": "Which control category limits physical access to facilities or devices?", "options": {"A": "Administrative", "B": "Physical", "C": "Technical", "D": "Corrective"}, "answer": "B"}, {"question": "Which control type is intended to stop an event before it occurs?", "options": {"A": "Corrective", "B": "Preventive", "C": "Detective", "D": "Compensating"}, "answer": "B"}, {"question": "Which control type discourages an attacker but may not directly stop access?", "options": {"A": "Deterrent", "B": "Corrective", "C": "Preventive", "D": "Detective"}, "answer": "A"}, {"question": "Which control type identifies and logs suspicious activity?", "options": {"A": "Corrective", "B": "Directive", "C": "Detective", "D": "Compensating"}, "answer": "C"}, {"question": "Which control type is applied after an incident to restore normal operations?", "options": {"A": "Corrective", "B": "Preventive", "C": "Deterrent", "D": "Directive"}, "answer": "A"}, {"question": "A company cannot immediately patch an application, so it blocks the vulnerable function with a firewall rule. What control type is this?", "options": {"A": "Preventive", "B": "Compensating", "C": "Directive", "D": "Detective"}, "answer": "B"}, {"question": "A sign says “Authorized Personnel Only.” What control type is this MOST likely?", "options": {"A": "Directive", "B": "Corrective", "C": "Cryptographic", "D": "Recovery"}, "answer": "A"}, {"question": "Which part of the CIA triad prevents unauthorized disclosure of information?", "options": {"A": "Availability", "B": "Integrity", "C": "Confidentiality", "D": "Authentication"}, "answer": "C"}, {"question": "Which part of the CIA triad ensures data is not modified without detection?", "options": {"A": "Integrity", "B": "Availability", "C": "Confidentiality", "D": "Accounting"}, "answer": "A"}, {"question": "Which part of the CIA triad ensures systems are accessible to authorized users?", "options": {"A": "Confidentiality", "B": "Availability", "C": "Integrity", "D": "Authorization"}, "answer": "B"}, {"question": "Which technology is commonly used to protect confidentiality?", "options": {"A": "Encryption", "B": "Load balancing", "C": "Logging", "D": "Redundancy only"}, "answer": "A"}, {"question": "Which technology is commonly used to verify integrity?", "options": {"A": "Hashing", "B": "NAT", "C": "DHCP", "D": "VLAN"}, "answer": "A"}, {"question": "Which concept provides proof that a message or action came from a specific source and cannot easily be denied?", "options": {"A": "Non-repudiation", "B": "Availability", "C": "Obfuscation", "D": "Segmentation"}, "answer": "A"}, {"question": "Which cryptographic method is commonly used to create proof of integrity?", "options": {"A": "Hashing", "B": "Compression", "C": "Port filtering", "D": "NAT"}, "answer": "A"}, {"question": "A user signs a document digitally. Which security concept is MOST supported?", "options": {"A": "Non-repudiation", "B": "Availability", "C": "Decommissioning", "D": "Federation"}, "answer": "A"}, {"question": "In AAA, which step proves that a user is who they claim to be?", "options": {"A": "Accounting", "B": "Authentication", "C": "Authorization", "D": "Auditing"}, "answer": "B"}, {"question": "In AAA, which step records login time, logout time, and resources used?", "options": {"A": "Identification", "B": "Authentication", "C": "Authorization", "D": "Accounting"}, "answer": "D"}, {"question": "In AAA, which step determines what access a user has after login?", "options": {"A": "Authorization", "B": "Accounting", "C": "Authentication", "D": "Hashing"}, "answer": "A"}, {"question": "Which item is usually used for identification?", "options": {"A": "Username", "B": "Firewall rule", "C": "Hash value", "D": "Certificate revocation list"}, "answer": "A"}, {"question": "Which method is commonly used to authenticate systems or devices?", "options": {"A": "Digitally signed certificate", "B": "Shared sticky note", "C": "Plaintext password in a script", "D": "Open wireless network"}, "answer": "A"}, {"question": "Which process compares the current security posture to a desired future state or baseline?", "options": {"A": "Gap analysis", "B": "Risk transfer", "C": "Hashing", "D": "Packet capture"}, "answer": "A"}, {"question": "Which outcome is usually produced by a gap analysis?", "options": {"A": "Formal description of current state and recommendations", "B": "Malware sample", "C": "DNS record", "D": "Encryption key only"}, "answer": "A"}, {"question": "Which Zero Trust idea is MOST accurate?", "options": {"A": "Internal users are automatically trusted", "B": "Everything must be verified", "C": "Monitoring stops after login", "D": "Firewalls replace identity checks"}, "answer": "B"}, {"question": "In Zero Trust, which component acts as the gatekeeper that allows, monitors, or terminates connections?", "options": {"A": "Policy Enforcement Point", "B": "Certificate Authority", "C": "Load Balancer", "D": "DNS Resolver"}, "answer": "A"}, {"question": "In Zero Trust, which component evaluates access decisions based on policy and other information sources?", "options": {"A": "Policy Engine", "B": "Honeynet", "C": "TPM", "D": "Root CA"}, "answer": "A"}, {"question": "In Zero Trust, which plane manages policies, rules, and forwarding decisions?", "options": {"A": "Data plane", "B": "Control plane", "C": "Physical plane", "D": "Backup plane"}, "answer": "B"}, {"question": "In Zero Trust, which plane processes frames, packets, and network data?", "options": {"A": "Data plane", "B": "Control plane", "C": "Governance plane", "D": "Legal plane"}, "answer": "A"}, {"question": "Which physical control is designed to stop vehicles from entering a protected area?", "options": {"A": "Bollard", "B": "Access badge", "C": "CCTV", "D": "Ultrasonic sensor"}, "answer": "A"}, {"question": "Which physical control uses two controlled doors to limit entry to one person or group at a time?", "options": {"A": "Access control vestibule", "B": "Honeypot", "C": "Fence", "D": "Key escrow"}, "answer": "A"}, {"question": "Which physical control is used to build a visible perimeter?", "options": {"A": "Fencing", "B": "Tokenization", "C": "Hashing", "D": "Salting"}, "answer": "A"}, {"question": "Which physical control records activity over time and may include motion recognition?", "options": {"A": "Video surveillance", "B": "Key stretching", "C": "Digital signature", "D": "Certificate pinning"}, "answer": "A"}, {"question": "Which physical control validates employee identity at a facility entrance?", "options": {"A": "Security guard", "B": "Hash function", "C": "CRL", "D": "Secure enclave"}, "answer": "A"}, {"question": "Which sensor detects infrared radiation and is commonly used for motion detection?", "options": {"A": "Infrared sensor", "B": "Pressure sensor", "C": "Microwave sensor", "D": "Ultrasonic sensor"}, "answer": "A"}, {"question": "Which sensor detects changes in force, such as on floors or windows?", "options": {"A": "Pressure sensor", "B": "Infrared sensor", "C": "Microwave sensor", "D": "Ultrasonic sensor"}, "answer": "A"}, {"question": "Which deception technology creates a fake system to attract attackers?", "options": {"A": "Honeypot", "B": "VLAN", "C": "VPN", "D": "HSM"}, "answer": "A"}, {"question": "Which deception technology creates a larger fake network with one or more honeypots?", "options": {"A": "Honeynet", "B": "Honeyfile", "C": "Honeytoken", "D": "DMZ"}, "answer": "A"}, {"question": "Which deception technology uses fake files, such as `passwords.txt`, to trigger alerts when accessed?", "options": {"A": "Honeyfile", "B": "Honeynet", "C": "Honeytoken", "D": "Jump server"}, "answer": "A"}, {"question": "Which deception technology uses traceable fake data such as fake API keys or fake email addresses?", "options": {"A": "Honeytoken", "B": "Honeynet", "C": "Honeyfile", "D": "Sandbox"}, "answer": "A"}, {"question": "Which change management item identifies who is affected by a change?", "options": {"A": "Stakeholders", "B": "Hash values", "C": "Certificates", "D": "Cipher suites"}, "answer": "A"}, {"question": "Which change management item evaluates possible risks and effects of a proposed change?", "options": {"A": "Impact analysis", "B": "Key exchange", "C": "Data masking", "D": "OCSP"}, "answer": "A"}, {"question": "Which change management item defines how to reverse a failed change?", "options": {"A": "Backout plan", "B": "Honeytoken", "C": "Digital signature", "D": "Key escrow"}, "answer": "A"}, {"question": "Which change management item defines when the change should occur to reduce production impact?", "options": {"A": "Maintenance window", "B": "Certificate chain", "C": "TPM", "D": "CRL"}, "answer": "A"}, {"question": "Which change management item helps track configuration changes over time and revert if needed?", "options": {"A": "Version control", "B": "Symmetric encryption", "C": "Obfuscation", "D": "Data sovereignty"}, "answer": "A"}, {"question": "Which list allows only approved applications or activities?", "options": {"A": "Allow list", "B": "Deny list", "C": "CRL", "D": "Key list"}, "answer": "A"}, {"question": "Which list blocks known bad applications or activities?", "options": {"A": "Deny list", "B": "Allow list", "C": "Access badge list", "D": "Certificate chain"}, "answer": "A"}, {"question": "Which cryptographic system binds public keys to people, services, or devices using certificates?", "options": {"A": "PKI", "B": "DNS", "C": "DHCP", "D": "RAID"}, "answer": "A"}, {"question": "Which party issues and signs digital certificates?", "options": {"A": "Certificate Authority", "B": "Data processor", "C": "Risk owner", "D": "Threat actor"}, "answer": "A"}, {"question": "Which key in asymmetric encryption must remain private?", "options": {"A": "Private key", "B": "Public key", "C": "Session ID", "D": "Hash value"}, "answer": "A"}, {"question": "Which key in asymmetric encryption can be shared openly?", "options": {"A": "Public key", "B": "Private key", "C": "Recovery key only", "D": "Salt value"}, "answer": "A"}, {"question": "Which encryption type uses the same key to encrypt and decrypt data?", "options": {"A": "Symmetric", "B": "Asymmetric", "C": "Hashing", "D": "Tokenization"}, "answer": "A"}, {"question": "Which encryption type uses mathematically related public and private keys?", "options": {"A": "Asymmetric", "B": "Symmetric", "C": "Salting", "D": "Masking"}, "answer": "A"}, {"question": "Which encryption level protects an entire drive?", "options": {"A": "Full-disk encryption", "B": "Record-level encryption", "C": "Transport encryption", "D": "Tokenization"}, "answer": "A"}, {"question": "Which encryption type protects data moving across a network?", "options": {"A": "Transport encryption", "B": "Database record encryption", "C": "Full-disk encryption", "D": "File hashing"}, "answer": "A"}, {"question": "Which hardware technology securely stores cryptographic keys on a device and is often used with BitLocker?", "options": {"A": "TPM", "B": "SIEM", "C": "VLAN", "D": "IDS"}, "answer": "A"}, {"question": "Which hardware device is used in large environments to securely store and manage many cryptographic keys?", "options": {"A": "HSM", "B": "WAF", "C": "VPN", "D": "IPS"}, "answer": "A"}, {"question": "Which technique replaces sensitive data with a non-sensitive substitute?", "options": {"A": "Tokenization", "B": "Salting", "C": "Key escrow", "D": "Hash collision"}, "answer": "A"}, {"question": "Which certificate status method allows real-time checking of whether a certificate has been revoked?", "options": {"A": "OCSP", "B": "FTP", "C": "SNMP", "D": "DHCP"}, "answer": "A"}];
+    const selected = new Array(questions.length).fill("");
+
+    const quizForm = document.getElementById("quizForm");
+    const quizTitle = document.getElementById("quizTitle");
+    const quizCodeElement = document.getElementById("quizCode");
+    const startPanel = document.getElementById("startPanel");
+    const startTitle = document.getElementById("startTitle");
+    const startCode = document.getElementById("startCode");
+    const startTotal = document.getElementById("startTotal");
+    const actionsPanel = document.getElementById("actionsPanel");
+    const answeredCount = document.getElementById("answeredCount");
+    const totalCount = document.getElementById("totalCount");
+    const timerText = document.getElementById("timerText");
+    const scoreText = document.getElementById("scoreText");
+    const exportText = document.getElementById("exportText");
+    let startedAt = null;
+    let elapsedSeconds = 0;
+    let timerId = null;
+
+    quizTitle.textContent = quizName;
+    quizCodeElement.textContent = quizCode;
+    startTitle.textContent = quizName;
+    startCode.textContent = quizCode;
+    startTotal.textContent = questions.length;
+    totalCount.textContent = questions.length;
+
+    function renderQuiz() {
+      quizForm.innerHTML = questions.map((item, index) => {
+        const questionNumber = index + 1;
+        const options = ["A", "B", "C", "D"].map(letter => `
+          <label class="option" data-question="${index}" data-choice="${letter}">
+            <input type="radio" name="q${index}" value="${letter}">
+            <span><strong>${letter}.</strong> ${escapeHtml(item.options[letter])}</span>
+          </label>
+        `).join("");
+
+        return `
+          <article class="question" id="question-${questionNumber}">
+            <div class="question-title">
+              <span class="number">${questionNumber}.</span>
+              <span>${escapeHtml(item.question)}</span>
+            </div>
+            <div class="options">${options}</div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function updateAnsweredCount() {
+      answeredCount.textContent = selected.filter(Boolean).length;
+    }
+
+    function formatDuration(totalSeconds) {
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      return [hours, minutes, seconds]
+        .map(value => String(value).padStart(2, "0"))
+        .join(":");
+    }
+
+    function updateTimer() {
+      if (!startedAt) {
+        return;
+      }
+      elapsedSeconds = Math.floor((Date.now() - startedAt) / 1000);
+      timerText.textContent = formatDuration(elapsedSeconds);
+    }
+
+    function resetTimer() {
+      startedAt = null;
+      elapsedSeconds = 0;
+      timerText.textContent = "00:00:00";
+      if (timerId) {
+        clearInterval(timerId);
+        timerId = null;
+      }
+    }
+
+    function startQuiz() {
+      startPanel.classList.add("hidden");
+      quizForm.classList.remove("hidden");
+      actionsPanel.classList.remove("hidden");
+      startedAt = Date.now();
+      updateTimer();
+      timerId = setInterval(updateTimer, 1000);
+    }
+
+    function clearMarks() {
+      document.querySelectorAll(".option").forEach(option => {
+        option.classList.remove("selected", "correct", "wrong");
+      });
+    }
+
+    function gradeQuiz() {
+      let correct = 0;
+      clearMarks();
+
+      questions.forEach((item, index) => {
+        const answer = item.answer;
+        const choice = selected[index];
+        const correctOption = document.querySelector(`[data-question="${index}"][data-choice="${answer}"]`);
+        correctOption.classList.add("correct");
+
+        if (choice === answer) {
+          correct += 1;
+        } else if (choice) {
+          const wrongOption = document.querySelector(`[data-question="${index}"][data-choice="${choice}"]`);
+          wrongOption.classList.add("wrong");
+        }
+      });
+
+      scoreText.textContent = `Điểm: ${correct}/${questions.length} (${Math.round(correct / questions.length * 100)}%)`;
+      return correct;
+    }
+
+    function buildExportString() {
+      const correct = questions.reduce((count, item, index) => (
+        count + (selected[index] === item.answer ? 1 : 0)
+      ), 0);
+
+      const answers = selected.map((choice, index) => `${index + 1}:${choice || "-"}`).join(",");
+      const wrong = questions
+        .map((item, index) => selected[index] === item.answer ? "" : `${index + 1}:${selected[index] || "-"}>${item.answer}`)
+        .filter(Boolean)
+        .join(",");
+
+      updateTimer();
+      return `quiz=${quizName};code=${quizCode};score=${correct}/${questions.length};time=${formatDuration(elapsedSeconds)};seconds=${elapsedSeconds};answers=${answers};wrong=${wrong || "none"}`;
+    }
+
+    quizForm.addEventListener("change", event => {
+      if (!event.target.matches('input[type="radio"]')) return;
+
+      const index = Number(event.target.name.replace("q", ""));
+      selected[index] = event.target.value;
+
+      document.querySelectorAll(`[data-question="${index}"]`).forEach(option => {
+        option.classList.toggle("selected", option.dataset.choice === selected[index]);
+        option.classList.remove("correct", "wrong");
+      });
+
+      scoreText.textContent = "";
+      updateAnsweredCount();
+    });
+
+    document.getElementById("gradeButton").addEventListener("click", gradeQuiz);
+    document.getElementById("startButton").addEventListener("click", startQuiz);
+
+    document.getElementById("exportButton").addEventListener("click", () => {
+      gradeQuiz();
+      exportText.value = buildExportString();
+      exportText.focus();
+      exportText.select();
+    });
+
+    document.getElementById("copyButton").addEventListener("click", async () => {
+      if (!exportText.value) {
+        exportText.value = buildExportString();
+      }
+
+      exportText.focus();
+      exportText.select();
+
+      try {
+        await navigator.clipboard.writeText(exportText.value);
+        scoreText.textContent = "Đã copy chuỗi kết quả.";
+      } catch {
+        document.execCommand("copy");
+        scoreText.textContent = "Đã chọn chuỗi kết quả, bạn có thể copy thủ công nếu trình duyệt chặn.";
+      }
+    });
+
+    document.getElementById("resetButton").addEventListener("click", () => {
+      selected.fill("");
+      quizForm.reset();
+      clearMarks();
+      scoreText.textContent = "";
+      exportText.value = "";
+      updateAnsweredCount();
+      resetTimer();
+      startPanel.classList.remove("hidden");
+      quizForm.classList.add("hidden");
+      actionsPanel.classList.add("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    renderQuiz();
+    updateAnsweredCount();
+    resetTimer();
+  </script>
+</body>
+</html>

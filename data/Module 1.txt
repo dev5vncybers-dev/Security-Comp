@@ -1,0 +1,613 @@
+## 1.
+Which control category includes firewalls, antivirus, and operating system access controls?
+
+A. Physical
+B. Technical
+C. Operational
+D. Managerial
+
+## 2.
+
+Which control category is associated with security policies and standard operating procedures?
+
+A. Managerial
+B. Physical
+C. Technical
+D. Detective
+
+## 3.
+
+Which control category is implemented by people rather than systems?
+
+A. Cryptographic
+B. Operational
+C. Physical
+D. Technical
+
+## 4.
+
+Which control category limits physical access to facilities or devices?
+
+A. Administrative
+B. Physical
+C. Technical
+D. Corrective
+
+## 5.
+
+Which control type is intended to stop an event before it occurs?
+
+A. Corrective
+B. Preventive
+C. Detective
+D. Compensating
+
+## 6.
+
+Which control type discourages an attacker but may not directly stop access?
+
+A. Deterrent
+B. Corrective
+C. Preventive
+D. Detective
+
+## 7.
+
+Which control type identifies and logs suspicious activity?
+
+A. Corrective
+B. Directive
+C. Detective
+D. Compensating
+
+## 8.
+
+Which control type is applied after an incident to restore normal operations?
+
+A. Corrective
+B. Preventive
+C. Deterrent
+D. Directive
+
+## 9.
+
+A company cannot immediately patch an application, so it blocks the vulnerable function with a firewall rule. What control type is this?
+
+A. Preventive
+B. Compensating
+C. Directive
+D. Detective
+
+## 10.
+
+A sign says “Authorized Personnel Only.” What control type is this MOST likely?
+
+A. Directive
+B. Corrective
+C. Cryptographic
+D. Recovery
+
+---
+
+## 11.
+
+Which part of the CIA triad prevents unauthorized disclosure of information?
+
+A. Availability
+B. Integrity
+C. Confidentiality
+D. Authentication
+
+## 12.
+
+Which part of the CIA triad ensures data is not modified without detection?
+
+A. Integrity
+B. Availability
+C. Confidentiality
+D. Accounting
+
+## 13.
+
+Which part of the CIA triad ensures systems are accessible to authorized users?
+
+A. Confidentiality
+B. Availability
+C. Integrity
+D. Authorization
+
+## 14.
+
+Which technology is commonly used to protect confidentiality?
+
+A. Encryption
+B. Load balancing
+C. Logging
+D. Redundancy only
+
+## 15.
+
+Which technology is commonly used to verify integrity?
+
+A. Hashing
+B. NAT
+C. DHCP
+D. VLAN
+
+## 16.
+
+Which concept provides proof that a message or action came from a specific source and cannot easily be denied?
+
+A. Non-repudiation
+B. Availability
+C. Obfuscation
+D. Segmentation
+
+## 17.
+
+Which cryptographic method is commonly used to create proof of integrity?
+
+A. Hashing
+B. Compression
+C. Port filtering
+D. NAT
+
+## 18.
+
+A user signs a document digitally. Which security concept is MOST supported?
+
+A. Non-repudiation
+B. Availability
+C. Decommissioning
+D. Federation
+
+## 19.
+
+In AAA, which step proves that a user is who they claim to be?
+
+A. Accounting
+B. Authentication
+C. Authorization
+D. Auditing
+
+## 20.
+
+In AAA, which step records login time, logout time, and resources used?
+
+A. Identification
+B. Authentication
+C. Authorization
+D. Accounting
+
+---
+
+## 21.
+
+In AAA, which step determines what access a user has after login?
+
+A. Authorization
+B. Accounting
+C. Authentication
+D. Hashing
+
+## 22.
+
+Which item is usually used for identification?
+
+A. Username
+B. Firewall rule
+C. Hash value
+D. Certificate revocation list
+
+## 23.
+
+Which method is commonly used to authenticate systems or devices?
+
+A. Digitally signed certificate
+B. Shared sticky note
+C. Plaintext password in a script
+D. Open wireless network
+
+## 24.
+
+Which process compares the current security posture to a desired future state or baseline?
+
+A. Gap analysis
+B. Risk transfer
+C. Hashing
+D. Packet capture
+
+## 25.
+
+Which outcome is usually produced by a gap analysis?
+
+A. Formal description of current state and recommendations
+B. Malware sample
+C. DNS record
+D. Encryption key only
+
+## 26.
+
+Which Zero Trust idea is MOST accurate?
+
+A. Internal users are automatically trusted
+B. Everything must be verified
+C. Monitoring stops after login
+D. Firewalls replace identity checks
+
+## 27.
+
+In Zero Trust, which component acts as the gatekeeper that allows, monitors, or terminates connections?
+
+A. Policy Enforcement Point
+B. Certificate Authority
+C. Load Balancer
+D. DNS Resolver
+
+## 28.
+
+In Zero Trust, which component evaluates access decisions based on policy and other information sources?
+
+A. Policy Engine
+B. Honeynet
+C. TPM
+D. Root CA
+
+## 29.
+
+In Zero Trust, which plane manages policies, rules, and forwarding decisions?
+
+A. Data plane
+B. Control plane
+C. Physical plane
+D. Backup plane
+
+## 30.
+
+In Zero Trust, which plane processes frames, packets, and network data?
+
+A. Data plane
+B. Control plane
+C. Governance plane
+D. Legal plane
+
+---
+
+## 31.
+
+Which physical control is designed to stop vehicles from entering a protected area?
+
+A. Bollard
+B. Access badge
+C. CCTV
+D. Ultrasonic sensor
+
+## 32.
+
+Which physical control uses two controlled doors to limit entry to one person or group at a time?
+
+A. Access control vestibule
+B. Honeypot
+C. Fence
+D. Key escrow
+
+## 33.
+
+Which physical control is used to build a visible perimeter?
+
+A. Fencing
+B. Tokenization
+C. Hashing
+D. Salting
+
+## 34.
+
+Which physical control records activity over time and may include motion recognition?
+
+A. Video surveillance
+B. Key stretching
+C. Digital signature
+D. Certificate pinning
+
+## 35.
+
+Which physical control validates employee identity at a facility entrance?
+
+A. Security guard
+B. Hash function
+C. CRL
+D. Secure enclave
+
+## 36.
+
+Which sensor detects infrared radiation and is commonly used for motion detection?
+
+A. Infrared sensor
+B. Pressure sensor
+C. Microwave sensor
+D. Ultrasonic sensor
+
+## 37.
+
+Which sensor detects changes in force, such as on floors or windows?
+
+A. Pressure sensor
+B. Infrared sensor
+C. Microwave sensor
+D. Ultrasonic sensor
+
+## 38.
+
+Which deception technology creates a fake system to attract attackers?
+
+A. Honeypot
+B. VLAN
+C. VPN
+D. HSM
+
+## 39.
+
+Which deception technology creates a larger fake network with one or more honeypots?
+
+A. Honeynet
+B. Honeyfile
+C. Honeytoken
+D. DMZ
+
+## 40.
+
+Which deception technology uses fake files, such as `passwords.txt`, to trigger alerts when accessed?
+
+A. Honeyfile
+B. Honeynet
+C. Honeytoken
+D. Jump server
+
+---
+
+## 41.
+
+Which deception technology uses traceable fake data such as fake API keys or fake email addresses?
+
+A. Honeytoken
+B. Honeynet
+C. Honeyfile
+D. Sandbox
+
+## 42.
+
+Which change management item identifies who is affected by a change?
+
+A. Stakeholders
+B. Hash values
+C. Certificates
+D. Cipher suites
+
+## 43.
+
+Which change management item evaluates possible risks and effects of a proposed change?
+
+A. Impact analysis
+B. Key exchange
+C. Data masking
+D. OCSP
+
+## 44.
+
+Which change management item defines how to reverse a failed change?
+
+A. Backout plan
+B. Honeytoken
+C. Digital signature
+D. Key escrow
+
+## 45.
+
+Which change management item defines when the change should occur to reduce production impact?
+
+A. Maintenance window
+B. Certificate chain
+C. TPM
+D. CRL
+
+## 46.
+
+Which change management item helps track configuration changes over time and revert if needed?
+
+A. Version control
+B. Symmetric encryption
+C. Obfuscation
+D. Data sovereignty
+
+## 47.
+
+Which list allows only approved applications or activities?
+
+A. Allow list
+B. Deny list
+C. CRL
+D. Key list
+
+## 48.
+
+Which list blocks known bad applications or activities?
+
+A. Deny list
+B. Allow list
+C. Access badge list
+D. Certificate chain
+
+## 49.
+
+Which cryptographic system binds public keys to people, services, or devices using certificates?
+
+A. PKI
+B. DNS
+C. DHCP
+D. RAID
+
+## 50.
+
+Which party issues and signs digital certificates?
+
+A. Certificate Authority
+B. Data processor
+C. Risk owner
+D. Threat actor
+
+---
+
+## 51.
+
+Which key in asymmetric encryption must remain private?
+
+A. Private key
+B. Public key
+C. Session ID
+D. Hash value
+
+## 52.
+
+Which key in asymmetric encryption can be shared openly?
+
+A. Public key
+B. Private key
+C. Recovery key only
+D. Salt value
+
+## 53.
+
+Which encryption type uses the same key to encrypt and decrypt data?
+
+A. Symmetric
+B. Asymmetric
+C. Hashing
+D. Tokenization
+
+## 54.
+
+Which encryption type uses mathematically related public and private keys?
+
+A. Asymmetric
+B. Symmetric
+C. Salting
+D. Masking
+
+## 55.
+
+Which encryption level protects an entire drive?
+
+A. Full-disk encryption
+B. Record-level encryption
+C. Transport encryption
+D. Tokenization
+
+## 56.
+
+Which encryption type protects data moving across a network?
+
+A. Transport encryption
+B. Database record encryption
+C. Full-disk encryption
+D. File hashing
+
+## 57.
+
+Which hardware technology securely stores cryptographic keys on a device and is often used with BitLocker?
+
+A. TPM
+B. SIEM
+C. VLAN
+D. IDS
+
+## 58.
+
+Which hardware device is used in large environments to securely store and manage many cryptographic keys?
+
+A. HSM
+B. WAF
+C. VPN
+D. IPS
+
+## 59.
+
+Which technique replaces sensitive data with a non-sensitive substitute?
+
+A. Tokenization
+B. Salting
+C. Key escrow
+D. Hash collision
+
+## 60.
+
+Which certificate status method allows real-time checking of whether a certificate has been revoked?
+
+A. OCSP
+B. FTP
+C. SNMP
+D. DHCP
+
+---
+
+# Answer Key
+
+1. B
+2. A
+3. B
+4. B
+5. B
+6. A
+7. C
+8. A
+9. B
+10. A
+11. C
+12. A
+13. B
+14. A
+15. A
+16. A
+17. A
+18. A
+19. B
+20. D
+21. A
+22. A
+23. A
+24. A
+25. A
+26. B
+27. A
+28. A
+29. B
+30. A
+31. A
+32. A
+33. A
+34. A
+35. A
+36. A
+37. A
+38. A
+39. A
+40. A
+41. A
+42. A
+43. A
+44. A
+45. A
+46. A
+47. A
+48. A
+49. A
+50. A
+51. A
+52. A
+53. A
+54. A
+55. A
+56. A
+57. A
+58. A
+59. A
+60. A

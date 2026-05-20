@@ -1,0 +1,716 @@
+## 1.
+
+Which document defines high-level security expectations for an organization?
+
+A. Procedure
+B. Policy
+C. Log file
+D. Vulnerability scan
+
+## 2.
+
+Which document provides step-by-step instructions for performing a task?
+
+A. Standard
+B. Policy
+C. Procedure
+D. MOU
+
+## 3.
+
+Which document defines mandatory technical requirements, such as password length or encryption strength?
+
+A. Standard
+B. Guideline
+C. Risk register
+D. SLA
+
+## 4.
+
+Which document is usually recommended but not always mandatory?
+
+A. Guideline
+B. Policy
+C. Contract
+D. Regulation
+
+## 5.
+
+An organization requires all laptops to use full-disk encryption. What type of document most likely defines this specific requirement?
+
+A. Standard
+B. MOU
+C. NDA
+D. Risk appetite statement
+
+## 6.
+
+Which term refers to the rules, processes, and structures used to direct and control an organization’s security program?
+
+A. Governance
+B. Exploitation
+C. Encryption
+D. Reconnaissance
+
+## 7.
+
+Which policy defines how employees may use company systems and networks?
+
+A. NDA
+B. SLA
+C. AUP
+D. SOW
+
+## 8.
+
+Which policy commonly covers password handling, data protection, and acceptable system behavior?
+
+A. Information security policy
+B. Sales policy
+C. Procurement invoice
+D. Shipping policy
+
+## 9.
+
+Which concept ensures employees understand and acknowledge security rules?
+
+A. Policy communication
+B. Buffer overflow
+C. DNS filtering
+D. Packet capture
+
+## 10.
+
+Which security consideration is MOST related to laws such as HIPAA or SOX?
+
+A. Regulatory
+B. Physical
+C. Cryptographic
+D. Wireless
+
+---
+
+## 11.
+
+Which security consideration deals with breach notification requirements and legal holds?
+
+A. Legal
+B. Tokenization
+C. Routing
+D. Load balancing
+
+## 12.
+
+Which security consideration varies depending on country or region?
+
+A. Geographical
+B. Hashing
+C. Sandboxing
+D. Compression
+
+## 13.
+
+Which industry would be MOST concerned with HIPAA requirements?
+
+A. Healthcare
+B. Retail only
+C. Gaming
+D. Transportation only
+
+## 14.
+
+Which industry is commonly associated with isolated and protected control systems?
+
+A. Public utilities
+B. Social media
+C. Entertainment
+D. E-commerce only
+
+## 15.
+
+Which data role is accountable for a specific set of business data?
+
+A. Data owner
+B. Data processor
+C. Penetration tester
+D. Security guard
+
+## 16.
+
+Which role determines the purpose and means of processing personal data?
+
+A. Data controller
+B. Data processor
+C. Data subject
+D. Risk owner
+
+## 17.
+
+Which role processes personal data on behalf of another party?
+
+A. Data processor
+B. Data owner
+C. Data subject
+D. Auditor
+
+## 18.
+
+Which role is the individual whose personal data is being processed?
+
+A. Data subject
+B. Data custodian
+C. Data owner
+D. Vendor manager
+
+## 19.
+
+Which role is responsible for maintaining data accuracy, privacy, security, and access rights?
+
+A. Data custodian/steward
+B. Data subject
+C. Risk transference provider
+D. External auditor
+
+## 20.
+
+A payroll department decides what payroll data is collected and why. What role is it performing?
+
+A. Data controller
+B. Data processor
+C. Data subject
+D. Data custodian only
+
+---
+
+## 21.
+
+A third-party payroll company stores and processes employee payroll data for another company. What role is it performing?
+
+A. Data processor
+B. Data subject
+C. Data owner
+D. Audit committee
+
+## 22.
+
+Which process identifies potential risks before they become problems?
+
+A. Risk identification
+B. Key stretching
+C. Port mirroring
+D. Load balancing
+
+## 23.
+
+Which type of risk assessment is performed at regular intervals?
+
+A. Recurring assessment
+B. Ad hoc assessment
+C. One-time assessment
+D. Blind assessment
+
+## 24.
+
+A CEO hears about a new attack at a conference and requests a temporary committee to evaluate exposure. What type of risk assessment is this?
+
+A. Ad hoc
+B. Recurring
+C. Annual mandated
+D. Continuous
+
+## 25.
+
+Which risk assessment method uses opinions, categories, or labels such as low, medium, and high?
+
+A. Qualitative
+B. Quantitative
+C. Cryptographic
+D. Forensic
+
+## 26.
+
+Which risk assessment method uses numerical values and financial calculations?
+
+A. Quantitative
+B. Qualitative
+C. Heuristic
+D. Passive
+
+## 27.
+
+What does ARO stand for?
+
+A. Annualized Rate of Occurrence
+B. Asset Recovery Objective
+C. Approved Risk Order
+D. Annual Recovery Operation
+
+## 28.
+
+What does SLE stand for?
+
+A. Single Loss Expectancy
+B. Security Log Event
+C. System Loss Estimate
+D. Standard Legal Exception
+
+## 29.
+
+Which formula is correct?
+
+A. SLE = Asset Value × Exposure Factor
+B. SLE = ARO × ALE
+C. SLE = RTO × RPO
+D. SLE = MTTR × MTBF
+
+## 30.
+
+Which formula is correct?
+
+A. ALE = ARO × SLE
+B. ALE = EF × RTO
+C. ALE = RPO × SLE
+D. ALE = MOU × SLA
+
+---
+
+## 31.
+
+What does exposure factor represent?
+
+A. Percentage of asset value lost during an incident
+B. Number of users affected by a password reset
+C. Amount of time needed to restore a server
+D. Number of alerts generated by a SIEM
+
+## 32.
+
+Which term describes the organization’s broad willingness to take risk?
+
+A. Risk appetite
+B. Risk register
+C. Risk owner
+D. Risk exception
+
+## 33.
+
+Which term describes acceptable variance from the organization’s risk appetite?
+
+A. Risk tolerance
+B. Risk avoidance
+C. Risk transference
+D. Risk rejection
+
+## 34.
+
+Which document tracks identified risks, owners, indicators, and mitigation plans?
+
+A. Risk register
+B. NDA
+C. SOW
+D. AUP
+
+## 35.
+
+Who is responsible for managing a specific identified risk?
+
+A. Risk owner
+B. Data subject
+C. Certificate authority
+D. Threat actor
+
+## 36.
+
+Which strategy accepts the risk as a business decision?
+
+A. Risk acceptance
+B. Risk avoidance
+C. Risk transference
+D. Risk mitigation
+
+## 37.
+
+Which strategy stops the risky activity entirely?
+
+A. Risk avoidance
+B. Risk acceptance
+C. Risk transference
+D. Risk exception
+
+## 38.
+
+Which strategy reduces risk by implementing controls?
+
+A. Risk mitigation
+B. Risk acceptance
+C. Risk transfer
+D. Risk rejection
+
+## 39.
+
+Which strategy moves risk to another party, such as through cyber insurance?
+
+A. Risk transference
+B. Risk avoidance
+C. Risk acceptance
+D. Risk tolerance
+
+## 40.
+
+A company cannot meet a security policy requirement due to a critical business constraint and receives formal approval. What is this?
+
+A. Exception or exemption
+B. Vulnerability scan
+C. Data sovereignty
+D. Evidence destruction
+
+---
+
+## 41.
+
+Which business impact category is usually the highest priority?
+
+A. Life
+B. Reputation
+C. Finance
+D. Property
+
+## 42.
+
+Which metric defines the maximum acceptable time to restore a service?
+
+A. RTO
+B. RPO
+C. ARO
+D. EF
+
+## 43.
+
+Which metric defines the maximum acceptable amount of data loss?
+
+A. RPO
+B. RTO
+C. MTBF
+D. MTTR
+
+## 44.
+
+Which metric represents average time required to repair a failed system?
+
+A. MTTR
+B. MTBF
+C. RPO
+D. ARO
+
+## 45.
+
+Which metric represents average time between failures?
+
+A. MTBF
+B. MTTR
+C. RTO
+D. SLE
+
+## 46.
+
+Which process evaluates vendor security before doing business with them?
+
+A. Due diligence
+B. Packet sniffing
+C. Privilege escalation
+D. Hashing
+
+## 47.
+
+Which third-party risk concern occurs when personal interests may compromise judgment?
+
+A. Conflict of interest
+B. Salting
+C. Tokenization
+D. Risk avoidance
+
+## 48.
+
+Which activity continues after a vendor contract is signed?
+
+A. Vendor monitoring
+B. Initial exploitation
+C. Sanitization only
+D. Password spraying
+
+## 49.
+
+Which document gathers vendor security information during assessment?
+
+A. Questionnaire
+B. Public key
+C. Honeypot
+D. Rootkit
+
+## 50.
+
+Which contract clause allows an organization to verify a third party’s security controls?
+
+A. Right-to-audit
+B. Default deny
+C. Least privilege
+D. Geofencing
+
+---
+
+## 51.
+
+Which agreement defines uptime, response time, and service expectations?
+
+A. SLA
+B. NDA
+C. MOU
+D. AUP
+
+## 52.
+
+Which agreement protects confidential information shared between parties?
+
+A. NDA
+B. SLA
+C. BPA
+D. RTO
+
+## 53.
+
+Which agreement is usually an informal statement of common goals?
+
+A. MOU
+B. SLA
+C. NDA
+D. AUP
+
+## 54.
+
+Which agreement is a broad legal framework for future work?
+
+A. MSA
+B. CVSS
+C. RPO
+D. GDPR
+
+## 55.
+
+Which document defines specific deliverables, scope, schedule, and acceptance criteria?
+
+A. SOW
+B. AUP
+C. SLA
+D. Data inventory
+
+## 56.
+
+Which agreement supports recurring business transactions between partners?
+
+A. BPA
+B. Hash value
+C. Penetration test report
+D. Risk threshold
+
+## 57.
+
+Which term means meeting laws, regulations, standards, or policies?
+
+A. Compliance
+B. Exploitation
+C. Containment
+D. Obfuscation
+
+## 58.
+
+Which compliance reporting is used inside the organization to track compliance efforts?
+
+A. Internal reporting
+B. External reporting
+C. Passive reconnaissance
+D. Credential reporting
+
+## 59.
+
+Which compliance reporting is required by regulators or external bodies?
+
+A. External reporting
+B. Internal reporting
+C. Self-signed reporting
+D. Informal reporting
+
+## 60.
+
+Which law is associated with healthcare information protection?
+
+A. HIPAA
+B. SMTP
+C. SAML
+D. CVE
+
+---
+
+## 61.
+
+Which law is associated with financial institution privacy disclosures?
+
+A. GLBA
+B. WPA3
+C. LDAP
+D. DMARC
+
+## 62.
+
+Which concept refers to the right of individuals to have certain personal data removed?
+
+A. Right to be forgotten
+B. Right to exploit
+C. Right to scan
+D. Right to escalate
+
+## 63.
+
+Which privacy concept requires knowing what data the organization stores?
+
+A. Data inventory
+B. DNS enumeration
+C. Port knocking
+D. Packet filtering
+
+## 64.
+
+Which audit can be performed by the organization itself?
+
+A. Internal audit
+B. External audit
+C. Red team only
+D. Blind test only
+
+## 65.
+
+Which audit is commonly performed by an independent third party?
+
+A. External audit
+B. Internal audit
+C. Self-assessment only
+D. Tabletop audit only
+
+## 66.
+
+Which term means an auditor provides an opinion about the accuracy of a company’s security posture?
+
+A. Attestation
+B. Exfiltration
+C. Federation
+D. Impersonation
+
+## 67.
+
+Which penetration testing perspective represents attackers attempting to find and exploit weaknesses?
+
+A. Red team
+B. Blue team
+C. Help desk
+D. Audit committee
+
+## 68.
+
+Which penetration testing perspective focuses on detecting and defending against attacks?
+
+A. Blue team
+B. Red team
+C. Data subject
+D. Vendor
+
+## 69.
+
+Which penetration testing knowledge level gives the tester full disclosure of the environment?
+
+A. Known environment
+B. Unknown environment
+C. Blind test
+D. Passive-only test
+
+## 70.
+
+Which training topic helps users recognize suspicious emails, social engineering, and unsafe behavior?
+
+A. Security awareness training
+B. Database normalization
+C. Load balancing
+D. RAID configuration
+
+---
+
+# Answer Key
+
+1. B
+2. C
+3. A
+4. A
+5. A
+6. A
+7. C
+8. A
+9. A
+10. A
+11. A
+12. A
+13. A
+14. A
+15. A
+16. A
+17. A
+18. A
+19. A
+20. A
+21. A
+22. A
+23. A
+24. A
+25. A
+26. A
+27. A
+28. A
+29. A
+30. A
+31. A
+32. A
+33. A
+34. A
+35. A
+36. A
+37. A
+38. A
+39. A
+40. A
+41. A
+42. A
+43. A
+44. A
+45. A
+46. A
+47. A
+48. A
+49. A
+50. A
+51. A
+52. A
+53. A
+54. A
+55. A
+56. A
+57. A
+58. A
+59. A
+60. A
+61. A
+62. A
+63. A
+64. A
+65. A
+66. A
+67. A
+68. A
+69. A
+70. A

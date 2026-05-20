@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Module 3 - 517921</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #1f2933;
+      --muted: #667085;
+      --line: #d6dbe3;
+      --accent: #2563eb;
+      --accent-soft: #e8f0ff;
+      --ok: #15803d;
+      --bad: #b42318;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .bar {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .status {
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .question {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .start-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+
+    .start-panel h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .start-panel p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .question-title {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .number {
+      flex: 0 0 auto;
+      min-width: 34px;
+      color: var(--accent);
+    }
+
+    .options {
+      display: grid;
+      gap: 8px;
+    }
+
+    label.option {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 10px 12px;
+      cursor: pointer;
+      background: #fff;
+    }
+
+    label.option:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    label.option.selected {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    label.option.correct {
+      border-color: var(--ok);
+      background: #eaf8ef;
+    }
+
+    label.option.wrong {
+      border-color: var(--bad);
+      background: #fff0ee;
+    }
+
+    input[type="radio"] {
+      margin-top: 4px;
+    }
+
+    .actions {
+      position: sticky;
+      bottom: 0;
+      background: rgba(246, 247, 249, 0.96);
+      border-top: 1px solid var(--line);
+      padding: 14px 0;
+      margin-top: 20px;
+    }
+
+    .actions-inner {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      border-radius: 7px;
+      padding: 10px 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #fff;
+      color: var(--accent);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 110px;
+      margin-top: 12px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 13px;
+      resize: vertical;
+    }
+
+    .result {
+      margin-top: 12px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 640px) {
+      .bar {
+        align-items: flex-start;
+      }
+
+      h1 {
+        font-size: 18px;
+      }
+
+      .question {
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <h1 id="quizTitle">Security Quiz</h1>
+      <div class="status">
+        <span>Code: <strong id="quizCode"></strong></span>
+        <span><span id="answeredCount">0</span>/<span id="totalCount">0</span> answered</span>
+        <span>Time: <strong id="timerText">00:00:00</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="start-panel" id="startPanel">
+      <h2 id="startTitle"></h2>
+      <p>Ma de: <strong id="startCode"></strong> · So cau: <strong id="startTotal"></strong></p>
+      <button type="button" id="startButton">Bat dau lam bai</button>
+    </section>
+
+    <form id="quizForm" class="hidden"></form>
+
+    <section class="actions hidden" id="actionsPanel">
+      <div class="actions-inner">
+        <button type="button" id="gradeButton">Chấm bài</button>
+        <button type="button" class="secondary" id="exportButton">Xuất chuỗi kết quả</button>
+        <button type="button" class="secondary" id="copyButton">Copy chuỗi</button>
+        <button type="button" class="secondary" id="resetButton">Làm lại</button>
+      </div>
+      <div class="result" id="scoreText"></div>
+      <textarea id="exportText" readonly placeholder="Chuỗi kết quả sẽ hiện ở đây sau khi bấm Xuất chuỗi kết quả."></textarea>
+    </section>
+  </main>
+
+  <script>
+    const quizName = "Module 3";
+    const quizCode = "517921";
+    const questions = [{"question": "Which cloud model provides virtualized infrastructure while the customer manages the operating system and applications?", "options": {"A": "SaaS", "B": "IaaS", "C": "PaaS", "D": "FaaS"}, "answer": "B"}, {"question": "Which cloud model provides a complete application managed mostly by the provider?", "options": {"A": "IaaS", "B": "PaaS", "C": "SaaS", "D": "On-premises"}, "answer": "C"}, {"question": "Which cloud model lets developers deploy applications without managing the underlying operating system?", "options": {"A": "PaaS", "B": "IaaS", "C": "Colocation", "D": "Air gap"}, "answer": "A"}, {"question": "Which document or model defines which security tasks belong to the cloud provider and which belong to the customer?", "options": {"A": "Responsibility matrix", "B": "Risk register", "C": "Chain of custody", "D": "Certificate revocation list"}, "answer": "A"}, {"question": "In most cloud shared responsibility models, who is responsible for physical datacenter security?", "options": {"A": "Customer", "B": "Cloud provider", "C": "End user", "D": "Data subject"}, "answer": "B"}, {"question": "In most IaaS environments, who is responsible for securing the guest operating system?", "options": {"A": "Customer", "B": "Cloud provider", "C": "ISP", "D": "Certificate authority"}, "answer": "A"}, {"question": "Which environment combines more than one public or private cloud environment?", "options": {"A": "Hybrid cloud", "B": "Air-gapped network", "C": "Legacy network", "D": "Embedded system"}, "answer": "A"}, {"question": "Which is a major security challenge in hybrid cloud environments?", "options": {"A": "Consistent authentication, firewall rules, logging, and monitoring", "B": "No need for encryption", "C": "Elimination of all third-party risk", "D": "Removal of identity management"}, "answer": "A"}, {"question": "Why are third-party vendors important in cloud security architecture?", "options": {"A": "They may provide cloud appliances, infrastructure, or services that affect security", "B": "They eliminate the need for monitoring", "C": "They remove the customer from the responsibility matrix", "D": "They make incident response unnecessary"}, "answer": "A"}, {"question": "Which architecture approach defines servers, networks, and services using code?", "options": {"A": "Infrastructure as Code", "B": "Manual patching", "C": "Data masking", "D": "Tokenization"}, "answer": "A"}, {"question": "What is a major benefit of Infrastructure as Code?", "options": {"A": "Repeatable and consistent deployments", "B": "No need for change management", "C": "No need for access control", "D": "Permanent immunity from vulnerabilities"}, "answer": "A"}, {"question": "Which architecture runs individual functions without requiring the customer to manage servers directly?", "options": {"A": "Serverless", "B": "On-premises", "C": "Air-gapped", "D": "Monolithic only"}, "answer": "A"}, {"question": "Which term is closely associated with serverless architecture?", "options": {"A": "Function as a Service", "B": "Full-disk encryption", "C": "Domain controller", "D": "Static routing"}, "answer": "A"}, {"question": "Which architecture breaks an application into small independent services that communicate through APIs?", "options": {"A": "Microservices", "B": "Mainframe", "C": "Flat network", "D": "Cold site"}, "answer": "A"}, {"question": "What is a security benefit of microservices?", "options": {"A": "Outages or compromises can be more contained", "B": "All authentication becomes unnecessary", "C": "All APIs become public by default", "D": "The entire app must be patched as one large unit"}, "answer": "A"}, {"question": "Which architecture is usually one large application where UI, business logic, and data processing are tightly connected?", "options": {"A": "Monolithic", "B": "Microservices", "C": "Serverless", "D": "Containerized only"}, "answer": "A"}, {"question": "Which concept physically separates a system from other networks?", "options": {"A": "Air gap", "B": "VLAN", "C": "VPN", "D": "Proxy"}, "answer": "A"}, {"question": "Which concept separates networks logically instead of physically?", "options": {"A": "Logical segmentation", "B": "Full-disk encryption", "C": "Power redundancy", "D": "Data masking"}, "answer": "A"}, {"question": "Which technology allows network configuration and control to be managed through software?", "options": {"A": "SDN", "B": "TPM", "C": "HSM", "D": "CCTV"}, "answer": "A"}, {"question": "Which environment is hosted and managed inside the organization’s own facilities?", "options": {"A": "On-premises", "B": "SaaS", "C": "Public cloud", "D": "Serverless"}, "answer": "A"}, {"question": "Which architecture centralizes control and management in one main location or system?", "options": {"A": "Centralized", "B": "Decentralized", "C": "Peer-to-peer only", "D": "Air-gapped"}, "answer": "A"}, {"question": "Which architecture distributes control or processing across multiple systems or locations?", "options": {"A": "Decentralized", "B": "Centralized", "C": "Single point of failure", "D": "Monolithic only"}, "answer": "A"}, {"question": "Which technology allows multiple virtual machines to run on a single physical host?", "options": {"A": "Virtualization", "B": "Tokenization", "C": "Hashing", "D": "Data masking"}, "answer": "A"}, {"question": "Which technology packages an application and its dependencies into an isolated runtime environment?", "options": {"A": "Containerization", "B": "RAID", "C": "NAT", "D": "DNSSEC"}, "answer": "A"}, {"question": "Which component allows virtual machines to run on physical hardware?", "options": {"A": "Hypervisor", "B": "Firewall rule", "C": "Certificate authority", "D": "Load balancer"}, "answer": "A"}, {"question": "Which environment includes smart sensors, cameras, appliances, and connected devices?", "options": {"A": "IoT", "B": "PKI", "C": "SAML", "D": "CVE"}, "answer": "A"}, {"question": "Which environment is commonly used in industrial control systems?", "options": {"A": "ICS/SCADA", "B": "OAuth", "C": "SPF", "D": "DMARC"}, "answer": "A"}, {"question": "Which operating system type is designed to process events within strict timing constraints?", "options": {"A": "Real-time operating system", "B": "General desktop OS", "C": "Guest-only OS", "D": "Directory service"}, "answer": "A"}, {"question": "Which systems are built into larger devices and often have limited resources?", "options": {"A": "Embedded systems", "B": "SIEM systems", "C": "Cloud-only systems", "D": "Ticketing systems"}, "answer": "A"}, {"question": "Which architecture goal focuses on keeping services running and accessible?", "options": {"A": "High availability", "B": "Obfuscation", "C": "Non-repudiation", "D": "Data sovereignty"}, "answer": "A"}, {"question": "Which design consideration measures how quickly a system responds to user or application requests?", "options": {"A": "Responsiveness", "B": "Key length", "C": "Exposure factor", "D": "Hash strength"}, "answer": "A"}, {"question": "Which design consideration measures how easily capacity can increase or decrease?", "options": {"A": "Scalability", "B": "Sanitization", "C": "Chain of custody", "D": "Non-repudiation"}, "answer": "A"}, {"question": "Which design consideration is concerned with how quickly services can be restored after failure?", "options": {"A": "Ease of recovery", "B": "Data classification", "C": "Tokenization", "D": "Credential stuffing"}, "answer": "A"}, {"question": "Which design concern is especially important for legacy, embedded, or industrial systems that cannot easily be updated?", "options": {"A": "Inability to patch", "B": "Email filtering", "C": "Key escrow", "D": "Password spraying"}, "answer": "A"}, {"question": "Which infrastructure concept defines where security devices should be placed in the network?", "options": {"A": "Device placement", "B": "Digital signature", "C": "Key stretching", "D": "Data owner"}, "answer": "A"}, {"question": "Which concept separates environments such as DMZ, internal network, guest network, and management network?", "options": {"A": "Security zones", "B": "Data masking", "C": "Blockchain", "D": "Key exchange"}, "answer": "A"}, {"question": "Which term describes all possible points where an attacker could try to enter or affect a system?", "options": {"A": "Attack surface", "B": "Recovery point", "C": "Certificate chain", "D": "Backup window"}, "answer": "A"}, {"question": "Which design concept considers how systems connect to each other and to external networks?", "options": {"A": "Connectivity", "B": "Salting", "C": "Obfuscation", "D": "Hashing"}, "answer": "A"}, {"question": "Which failure mode allows traffic or access when a security system fails?", "options": {"A": "Fail-open", "B": "Fail-closed", "C": "Full backup", "D": "Cold site"}, "answer": "A"}, {"question": "Which failure mode blocks traffic or access when a security system fails?", "options": {"A": "Fail-closed", "B": "Fail-open", "C": "Warm site", "D": "Hot site"}, "answer": "A"}, {"question": "Which device attribute describes a security device that can block traffic directly?", "options": {"A": "Inline", "B": "Passive", "C": "Tap only", "D": "Offline"}, "answer": "A"}, {"question": "Which device attribute describes a system that only observes traffic without blocking it?", "options": {"A": "Passive", "B": "Inline", "C": "Active blocker", "D": "Fail-closed only"}, "answer": "A"}, {"question": "Which network appliance provides a controlled administrative access point into sensitive networks?", "options": {"A": "Jump server", "B": "DNS server", "C": "DHCP server", "D": "Print server"}, "answer": "A"}, {"question": "Which network appliance forwards client requests and can provide filtering or anonymity?", "options": {"A": "Proxy server", "B": "Load balancer", "C": "HSM", "D": "TPM"}, "answer": "A"}, {"question": "Which network appliance actively blocks detected malicious traffic?", "options": {"A": "IPS", "B": "IDS", "C": "Tap monitor", "D": "Syslog server"}, "answer": "A"}, {"question": "Which network appliance detects suspicious activity but usually does not block traffic by itself?", "options": {"A": "IDS", "B": "IPS", "C": "WAF only", "D": "Load balancer"}, "answer": "A"}, {"question": "Which appliance distributes traffic across multiple backend servers?", "options": {"A": "Load balancer", "B": "Jump server", "C": "Router ACL", "D": "Honeypot"}, "answer": "A"}, {"question": "Which port security standard provides network access control based on authentication?", "options": {"A": "802.1X", "B": "WPA only", "C": "DNSSEC", "D": "SNMPv2"}, "answer": "A"}, {"question": "Which authentication framework is commonly used with 802.1X?", "options": {"A": "EAP", "B": "FTP", "C": "ARP", "D": "ICMP"}, "answer": "A"}, {"question": "Which firewall type is designed specifically to protect web applications?", "options": {"A": "WAF", "B": "Packet generator", "C": "UPS", "D": "HSM"}, "answer": "A"}, {"question": "Which firewall type combines multiple security features such as firewalling, IDS/IPS, web filtering, and antivirus?", "options": {"A": "UTM", "B": "TPM", "C": "RTOS", "D": "NAS"}, "answer": "A"}, {"question": "Which firewall type includes advanced inspection features such as application awareness and identity-based controls?", "options": {"A": "NGFW", "B": "Layer 1 repeater", "C": "DHCP relay", "D": "Backup server"}, "answer": "A"}, {"question": "Which firewall mainly filters using IP addresses, ports, and protocols?", "options": {"A": "Layer 4 firewall", "B": "Layer 7 firewall", "C": "Data loss prevention system", "D": "Certificate authority"}, "answer": "A"}, {"question": "Which firewall can inspect application-layer traffic such as HTTP requests?", "options": {"A": "Layer 7 firewall", "B": "Layer 2 switch", "C": "Layer 1 hub", "D": "Cold site"}, "answer": "A"}, {"question": "Which technology creates encrypted private communication over an untrusted network?", "options": {"A": "VPN", "B": "DHCP", "C": "SNMPv1", "D": "Telnet"}, "answer": "A"}, {"question": "Which protocol is commonly used for site-to-site VPNs?", "options": {"A": "IPsec", "B": "POP3", "C": "FTP", "D": "HTTP"}, "answer": "A"}, {"question": "Which protocol is commonly used to secure application communication such as HTTPS?", "options": {"A": "TLS", "B": "ARP", "C": "ICMP", "D": "TFTP"}, "answer": "A"}, {"question": "Which technology provides secure access and networking functions as a cloud-delivered service model?", "options": {"A": "SASE", "B": "BIOS", "C": "RAID 0", "D": "SMTP"}, "answer": "A"}, {"question": "Which technology improves WAN connectivity using software-based control and path selection?", "options": {"A": "SD-WAN", "B": "CRL", "C": "OCSP", "D": "CCTV"}, "answer": "A"}, {"question": "Which type of data includes information protected by laws, regulations, or compliance requirements?", "options": {"A": "Regulated data", "B": "Public data only", "C": "Temporary cache", "D": "Unclassified test data"}, "answer": "A"}, {"question": "Which type of data includes formulas, designs, source code, or business secrets that provide competitive advantage?", "options": {"A": "Trade secret or intellectual property", "B": "Public information", "C": "Open-source package only", "D": "Disposable data"}, "answer": "A"}, {"question": "Which data classification is generally available to anyone?", "options": {"A": "Public", "B": "Restricted", "C": "Confidential", "D": "Critical"}, "answer": "A"}, {"question": "Which data classification usually requires strong protection because unauthorized disclosure could harm the organization?", "options": {"A": "Confidential", "B": "Public", "C": "Unrestricted", "D": "Temporary"}, "answer": "A"}, {"question": "Which data classification is commonly used for information with the highest level of access limitation?", "options": {"A": "Restricted", "B": "Public", "C": "Marketing-approved", "D": "Open"}, "answer": "A"}, {"question": "Which data state describes data stored on a drive, database, backup, or cloud storage?", "options": {"A": "Data at rest", "B": "Data in transit", "C": "Data in use", "D": "Data in motion only"}, "answer": "A"}, {"question": "Which data state describes data moving across a network?", "options": {"A": "Data in transit", "B": "Data at rest", "C": "Data in use", "D": "Archived data"}, "answer": "A"}, {"question": "Which data state describes data actively processed by CPU or memory?", "options": {"A": "Data in use", "B": "Data at rest", "C": "Data in transit", "D": "Deleted data"}, "answer": "A"}, {"question": "Which concept means data may be subject to the laws of the country or region where it is stored?", "options": {"A": "Data sovereignty", "B": "Hash collision", "C": "Load balancing", "D": "Fail-open"}, "answer": "A"}, {"question": "Which data protection method replaces sensitive values with substitute values?", "options": {"A": "Tokenization", "B": "Brute force", "C": "Journaling", "D": "Spoofing"}, "answer": "A"}, {"question": "Which data protection method hides part of the data, such as showing only the last four digits of a card number?", "options": {"A": "Masking", "B": "Salting", "C": "RAID", "D": "Clustering"}, "answer": "A"}, {"question": "Which recovery site is fully equipped and ready to take over quickly?", "options": {"A": "Hot site", "B": "Cold site", "C": "Archive site", "D": "Offline vault only"}, "answer": "A"}, {"question": "Which recovery site has space and basic infrastructure but requires significant setup before use?", "options": {"A": "Cold site", "B": "Hot site", "C": "Active-active cluster", "D": "Production site"}, "answer": "A"}, {"question": "Which recovery site is partially prepared and faster to activate than a cold site but slower than a hot site?", "options": {"A": "Warm site", "B": "Cold site", "C": "Air-gapped site", "D": "Tap site"}, "answer": "A"}, {"question": "Which power device provides short-term battery power during an outage?", "options": {"A": "UPS", "B": "WAF", "C": "IDS", "D": "HSM"}, "answer": "A"}, {"question": "Which power solution provides longer-term electrical power during extended outages?", "options": {"A": "Generator", "B": "TPM", "C": "Proxy", "D": "Firewall"}, "answer": "A"}];
+    const selected = new Array(questions.length).fill("");
+
+    const quizForm = document.getElementById("quizForm");
+    const quizTitle = document.getElementById("quizTitle");
+    const quizCodeElement = document.getElementById("quizCode");
+    const startPanel = document.getElementById("startPanel");
+    const startTitle = document.getElementById("startTitle");
+    const startCode = document.getElementById("startCode");
+    const startTotal = document.getElementById("startTotal");
+    const actionsPanel = document.getElementById("actionsPanel");
+    const answeredCount = document.getElementById("answeredCount");
+    const totalCount = document.getElementById("totalCount");
+    const timerText = document.getElementById("timerText");
+    const scoreText = document.getElementById("scoreText");
+    const exportText = document.getElementById("exportText");
+    let startedAt = null;
+    let elapsedSeconds = 0;
+    let timerId = null;
+
+    quizTitle.textContent = quizName;
+    quizCodeElement.textContent = quizCode;
+    startTitle.textContent = quizName;
+    startCode.textContent = quizCode;
+    startTotal.textContent = questions.length;
+    totalCount.textContent = questions.length;
+
+    function renderQuiz() {
+      quizForm.innerHTML = questions.map((item, index) => {
+        const questionNumber = index + 1;
+        const options = ["A", "B", "C", "D"].map(letter => `
+          <label class="option" data-question="${index}" data-choice="${letter}">
+            <input type="radio" name="q${index}" value="${letter}">
+            <span><strong>${letter}.</strong> ${escapeHtml(item.options[letter])}</span>
+          </label>
+        `).join("");
+
+        return `
+          <article class="question" id="question-${questionNumber}">
+            <div class="question-title">
+              <span class="number">${questionNumber}.</span>
+              <span>${escapeHtml(item.question)}</span>
+            </div>
+            <div class="options">${options}</div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function updateAnsweredCount() {
+      answeredCount.textContent = selected.filter(Boolean).length;
+    }
+
+    function formatDuration(totalSeconds) {
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      return [hours, minutes, seconds]
+        .map(value => String(value).padStart(2, "0"))
+        .join(":");
+    }
+
+    function updateTimer() {
+      if (!startedAt) {
+        return;
+      }
+      elapsedSeconds = Math.floor((Date.now() - startedAt) / 1000);
+      timerText.textContent = formatDuration(elapsedSeconds);
+    }
+
+    function resetTimer() {
+      startedAt = null;
+      elapsedSeconds = 0;
+      timerText.textContent = "00:00:00";
+      if (timerId) {
+        clearInterval(timerId);
+        timerId = null;
+      }
+    }
+
+    function startQuiz() {
+      startPanel.classList.add("hidden");
+      quizForm.classList.remove("hidden");
+      actionsPanel.classList.remove("hidden");
+      startedAt = Date.now();
+      updateTimer();
+      timerId = setInterval(updateTimer, 1000);
+    }
+
+    function clearMarks() {
+      document.querySelectorAll(".option").forEach(option => {
+        option.classList.remove("selected", "correct", "wrong");
+      });
+    }
+
+    function gradeQuiz() {
+      let correct = 0;
+      clearMarks();
+
+      questions.forEach((item, index) => {
+        const answer = item.answer;
+        const choice = selected[index];
+        const correctOption = document.querySelector(`[data-question="${index}"][data-choice="${answer}"]`);
+        correctOption.classList.add("correct");
+
+        if (choice === answer) {
+          correct += 1;
+        } else if (choice) {
+          const wrongOption = document.querySelector(`[data-question="${index}"][data-choice="${choice}"]`);
+          wrongOption.classList.add("wrong");
+        }
+      });
+
+      scoreText.textContent = `Điểm: ${correct}/${questions.length} (${Math.round(correct / questions.length * 100)}%)`;
+      return correct;
+    }
+
+    function buildExportString() {
+      const correct = questions.reduce((count, item, index) => (
+        count + (selected[index] === item.answer ? 1 : 0)
+      ), 0);
+
+      const answers = selected.map((choice, index) => `${index + 1}:${choice || "-"}`).join(",");
+      const wrong = questions
+        .map((item, index) => selected[index] === item.answer ? "" : `${index + 1}:${selected[index] || "-"}>${item.answer}`)
+        .filter(Boolean)
+        .join(",");
+
+      updateTimer();
+      return `quiz=${quizName};code=${quizCode};score=${correct}/${questions.length};time=${formatDuration(elapsedSeconds)};seconds=${elapsedSeconds};answers=${answers};wrong=${wrong || "none"}`;
+    }
+
+    quizForm.addEventListener("change", event => {
+      if (!event.target.matches('input[type="radio"]')) return;
+
+      const index = Number(event.target.name.replace("q", ""));
+      selected[index] = event.target.value;
+
+      document.querySelectorAll(`[data-question="${index}"]`).forEach(option => {
+        option.classList.toggle("selected", option.dataset.choice === selected[index]);
+        option.classList.remove("correct", "wrong");
+      });
+
+      scoreText.textContent = "";
+      updateAnsweredCount();
+    });
+
+    document.getElementById("gradeButton").addEventListener("click", gradeQuiz);
+    document.getElementById("startButton").addEventListener("click", startQuiz);
+
+    document.getElementById("exportButton").addEventListener("click", () => {
+      gradeQuiz();
+      exportText.value = buildExportString();
+      exportText.focus();
+      exportText.select();
+    });
+
+    document.getElementById("copyButton").addEventListener("click", async () => {
+      if (!exportText.value) {
+        exportText.value = buildExportString();
+      }
+
+      exportText.focus();
+      exportText.select();
+
+      try {
+        await navigator.clipboard.writeText(exportText.value);
+        scoreText.textContent = "Đã copy chuỗi kết quả.";
+      } catch {
+        document.execCommand("copy");
+        scoreText.textContent = "Đã chọn chuỗi kết quả, bạn có thể copy thủ công nếu trình duyệt chặn.";
+      }
+    });
+
+    document.getElementById("resetButton").addEventListener("click", () => {
+      selected.fill("");
+      quizForm.reset();
+      clearMarks();
+      scoreText.textContent = "";
+      exportText.value = "";
+      updateAnsweredCount();
+      resetTimer();
+      startPanel.classList.remove("hidden");
+      quizForm.classList.add("hidden");
+      actionsPanel.classList.add("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    renderQuiz();
+    updateAnsweredCount();
+    resetTimer();
+  </script>
+</body>
+</html>

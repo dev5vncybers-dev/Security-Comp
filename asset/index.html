@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz Menu</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #1f2933;
+      --muted: #667085;
+      --line: #d6dbe3;
+      --accent: #2563eb;
+      --accent-soft: #e8f0ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 18px;
+    }
+
+    h1 {
+      margin: 0 0 6px;
+      font-size: 28px;
+    }
+
+    p {
+      margin: 0 0 22px;
+      color: var(--muted);
+    }
+
+    .list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .quiz-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .quiz-link:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    strong {
+      display: block;
+      font-size: 18px;
+    }
+
+    small {
+      display: block;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .arrow {
+      color: var(--accent);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Choose a Quiz</h1>
+    <p>The timer starts only after you open a quiz and press Start.</p>
+    <div class="list">
+        <a class="quiz-link" href="Module 1.html">
+          <span>
+            <strong>Module 1</strong>
+            <small>Quiz code 716479 · 60 questions</small>
+          </span>
+          <span class="arrow">Open</span>
+        </a>
+        <a class="quiz-link" href="Module 2.html">
+          <span>
+            <strong>Module 2</strong>
+            <small>Quiz code 258926 · 85 questions</small>
+          </span>
+          <span class="arrow">Open</span>
+        </a>
+        <a class="quiz-link" href="Module 3.html">
+          <span>
+            <strong>Module 3</strong>
+            <small>Quiz code 517921 · 75 questions</small>
+          </span>
+          <span class="arrow">Open</span>
+        </a>
+        <a class="quiz-link" href="Module 4.html">
+          <span>
+            <strong>Module 4</strong>
+            <small>Quiz code 967872 · 100 questions</small>
+          </span>
+          <span class="arrow">Open</span>
+        </a>
+        <a class="quiz-link" href="Module 5.html">
+          <span>
+            <strong>Module 5</strong>
+            <small>Quiz code 530656 · 70 questions</small>
+          </span>
+          <span class="arrow">Open</span>
+        </a>
+        <a class="quiz-link" href="Quiz 1.html">
+          <span>
+            <strong>Quiz 1</strong>
+            <small>Quiz code 051389 · 100 questions</small>
+          </span>
+          <span class="arrow">Open</span>
+        </a>
+    </div>
+  </main>
+</body>
+</html>

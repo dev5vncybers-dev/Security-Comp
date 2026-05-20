@@ -1,0 +1,870 @@
+## 1.
+
+Which threat actor is MOST commonly associated with government-backed operations and advanced persistent threats?
+
+A. Nation-state
+B. Unskilled attacker
+C. Shadow IT
+D. Script kiddie
+
+## 2.
+
+Which threat actor is MOST likely to use pre-made tools without deep technical understanding?
+
+A. Organized crime
+B. Nation-state
+C. Unskilled attacker
+D. Insider threat
+
+## 3.
+
+Which threat actor is usually motivated by political, social, or philosophical beliefs?
+
+A. Hacktivist
+B. Shadow IT
+C. Vendor
+D. Certificate authority
+
+## 4.
+
+Which threat actor uses knowledge and access from inside the organization?
+
+A. Insider threat
+B. External attacker
+C. Open-source maintainer
+D. Botnet operator only
+
+## 5.
+
+Which threat actor is MOST associated with financial gain and professional criminal operations?
+
+A. Organized crime
+B. Hacktivist
+C. Shadow IT
+D. Unskilled attacker
+
+## 6.
+
+Which term describes departments or users building technology solutions without approval from the official IT organization?
+
+A. Shadow IT
+B. Zero Trust
+C. Federation
+D. Tokenization
+
+## 7.
+
+Which attribute describes whether a threat actor is inside or outside the organization?
+
+A. Internal/external
+B. Hash length
+C. Cipher strength
+D. Port number
+
+## 8.
+
+Which attribute describes how much money, infrastructure, or support a threat actor has?
+
+A. Resources/funding
+B. Exposure factor
+C. Key length
+D. Availability
+
+## 9.
+
+Which attribute describes the technical skill and capability of the attacker?
+
+A. Sophistication/capability
+B. Encryption level
+C. Data classification
+D. Backup frequency
+
+## 10.
+
+Which motivation is MOST associated with stealing sensitive information from an organization?
+
+A. Data exfiltration
+B. Load balancing
+C. Data masking
+D. System hardening
+
+---
+
+## 11.
+
+Which motivation is MOST associated with spying on another organization or country?
+
+A. Espionage
+B. Availability
+C. Sanitization
+D. Accounting
+
+## 12.
+
+Which motivation is MOST associated with ransomware attackers demanding payment?
+
+A. Blackmail or financial gain
+B. Compliance
+C. Risk avoidance
+D. Ethical research
+
+## 13.
+
+Which motivation is MOST associated with attacking systems to make services unavailable?
+
+A. Service disruption
+B. Data sovereignty
+C. Key escrow
+D. Non-repudiation
+
+## 14.
+
+Which attack vector uses email, SMS, or instant messaging?
+
+A. Message-based vector
+B. Physical vector
+C. Hardware vector
+D. Cryptographic vector
+
+## 15.
+
+Which threat vector uses a malicious attachment or downloaded document?
+
+A. File-based vector
+B. Voice-call vector
+C. RFID vector
+D. Power vector
+
+## 16.
+
+Which threat vector uses a malicious USB drive?
+
+A. Removable device
+B. Database trigger
+C. Certificate chain
+D. Secure enclave
+
+## 17.
+
+Which threat vector relies on unpatched or exploitable applications?
+
+A. Vulnerable software
+B. Data masking
+C. Tokenization
+D. Fault tolerance
+
+## 18.
+
+Which term describes software or operating systems no longer receiving security patches?
+
+A. Unsupported systems
+B. Serverless systems
+C. High availability systems
+D. Ephemeral systems
+
+## 19.
+
+Which threat vector increases risk because every listening service may provide an entry point?
+
+A. Open service ports
+B. Data retention
+C. Hashing
+D. Certificate pinning
+
+## 20.
+
+Which threat vector involves unchanged factory usernames and passwords?
+
+A. Default credentials
+B. Data classification
+C. Digital signature
+D. Key stretching
+
+---
+
+## 21.
+
+Which threat vector involves vendors, suppliers, or managed service providers?
+
+A. Supply chain
+B. Sandboxing
+C. Segmentation
+D. Data minimization
+
+## 22.
+
+Which social engineering attack uses fraudulent email or messages to trick users?
+
+A. Phishing
+B. VLAN hopping
+C. Directory traversal
+D. Collision attack
+
+## 23.
+
+Which social engineering attack uses phone calls or voicemail?
+
+A. Vishing
+B. Smishing
+C. Typosquatting
+D. Watering hole
+
+## 24.
+
+Which social engineering attack uses SMS text messages?
+
+A. Smishing
+B. Vishing
+C. Whaling
+D. Pharming
+
+## 25.
+
+Which attack involves a fake story or invented scenario to obtain information?
+
+A. Pretexting
+B. Buffer overflow
+C. Rootkit
+D. Replay attack
+
+## 26.
+
+Which attack impersonates a trusted brand to deceive users?
+
+A. Brand impersonation
+B. Tokenization
+C. Secure boot
+D. Data journaling
+
+## 27.
+
+Which attack registers similar-looking domain names to trick users?
+
+A. Typosquatting
+B. Jailbreaking
+C. On-path attack
+D. Logic bomb
+
+## 28.
+
+Which attack compromises a website commonly visited by the target group?
+
+A. Watering hole
+B. Password spraying
+C. DDoS amplification
+D. RFID cloning
+
+## 29.
+
+Which type of fraud commonly uses spoofed business email to change payment or wire transfer details?
+
+A. Business email compromise
+B. Cross-site scripting
+C. ARP spoofing
+D. VM escape
+
+## 30.
+
+Which technique spreads false information intentionally to influence people or organizations?
+
+A. Misinformation/disinformation
+B. Salting
+C. Hashing
+D. Key exchange
+
+---
+
+## 31.
+
+Which vulnerability occurs when code is injected into a running process or memory space?
+
+A. Memory injection
+B. Data masking
+C. Key escrow
+D. Honeynet
+
+## 32.
+
+Which vulnerability occurs when a program writes more data into memory than the allocated buffer can hold?
+
+A. Buffer overflow
+B. DNS poisoning
+C. Password spraying
+D. Tokenization
+
+## 33.
+
+Which vulnerability depends on timing between checking a condition and using a resource?
+
+A. Race condition
+B. Replay attack
+C. Birthday attack
+D. Credential stuffing
+
+## 34.
+
+Which race condition concept means “time of check”?
+
+A. TOC
+B. TOU
+C. RTO
+D. RPO
+
+## 35.
+
+Which race condition concept means “time of use”?
+
+A. TOU
+B. TOC
+C. MTBF
+D. MTTR
+
+## 36.
+
+Which vulnerability involves a trusted update mechanism delivering malicious code?
+
+A. Malicious update
+B. Full-disk encryption
+C. Load balancing
+D. Risk transfer
+
+## 37.
+
+Which web vulnerability allows attackers to run database commands through input fields?
+
+A. SQL injection
+B. XSS
+C. CSRF
+D. XML signing
+
+## 38.
+
+Which web vulnerability injects malicious scripts into pages viewed by other users?
+
+A. Cross-site scripting
+B. SQL injection
+C. DNSSEC failure
+D. Key stretching
+
+## 39.
+
+Which vulnerability is associated with outdated firmware, end-of-life devices, or legacy hardware?
+
+A. Hardware vulnerability
+B. Governance vulnerability
+C. Legal vulnerability
+D. Audit vulnerability
+
+## 40.
+
+Which virtualization vulnerability allows an attacker to break out of a guest VM and affect the host?
+
+A. VM escape
+B. Sandboxing
+C. Cloud bursting
+D. Federation
+
+---
+
+## 41.
+
+Which virtualization issue occurs when data remains available after resources are reassigned?
+
+A. Resource reuse
+B. Honeypot
+C. SAML assertion
+D. Chain of custody
+
+## 42.
+
+Which mobile vulnerability involves installing apps from unofficial sources?
+
+A. Side loading
+B. Tokenization
+C. Certificate pinning
+D. Risk acceptance
+
+## 43.
+
+Which mobile vulnerability removes built-in operating system restrictions on a mobile device?
+
+A. Jailbreaking
+B. Segmentation
+C. Journaling
+D. Attestation
+
+## 44.
+
+Which vulnerability is unknown to the vendor and has no available patch at the time of discovery?
+
+A. Zero-day
+B. End-of-life
+C. False positive
+D. Unsupported system
+
+## 45.
+
+Which vulnerability commonly results from insecure settings, exposed services, or weak defaults?
+
+A. Misconfiguration
+B. Data sovereignty
+C. Certificate transparency
+D. Hot site
+
+## 46.
+
+Which supply chain vulnerability involves risk from third-party software providers?
+
+A. Software provider vulnerability
+B. Key escrow
+C. Full-disk encryption
+D. Hash collision
+
+## 47.
+
+Which malware encrypts victim files and demands payment?
+
+A. Ransomware
+B. Worm
+C. Spyware
+D. Bloatware
+
+## 48.
+
+Which malware disguises itself as legitimate software?
+
+A. Trojan
+B. Worm
+C. Virus
+D. Logic bomb
+
+## 49.
+
+Which malware spreads by self-replicating across networks?
+
+A. Worm
+B. Rootkit
+C. Bloatware
+D. Spyware
+
+## 50.
+
+Which malware secretly collects user activity or information?
+
+A. Spyware
+B. WAF
+C. HSM
+D. VLAN
+
+---
+
+## 51.
+
+Which software is unwanted, preinstalled, or consumes resources without clear user benefit?
+
+A. Bloatware
+B. Tokenization
+C. Root CA
+D. Federation
+
+## 52.
+
+Which malware attaches to legitimate files or programs and spreads when they run?
+
+A. Virus
+B. Honeypot
+C. TPM
+D. IDS
+
+## 53.
+
+Which malware records user keystrokes?
+
+A. Keylogger
+B. Rootkit
+C. Worm
+D. Logic bomb
+
+## 54.
+
+Which malware executes when a specific condition or trigger occurs?
+
+A. Logic bomb
+B. Key escrow
+C. Honeynet
+D. NetFlow
+
+## 55.
+
+Which malware hides its presence and may provide privileged access?
+
+A. Rootkit
+B. Bloatware
+C. Virus signature
+D. Sandbox
+
+## 56.
+
+Which physical attack clones badge or card information?
+
+A. RFID cloning
+B. SQL injection
+C. DNS poisoning
+D. XSS
+
+## 57.
+
+Which physical attack attempts to force entry into a protected area or device?
+
+A. Brute force
+B. Key stretching
+C. OCSP stapling
+D. Digital signing
+
+## 58.
+
+Which network attack uses many compromised devices to overwhelm a target?
+
+A. DDoS
+B. XSS
+C. Keylogger
+D. Side loading
+
+## 59.
+
+Which DDoS type uses third-party systems to multiply traffic volume toward a victim?
+
+A. Amplified DDoS
+B. Password spraying
+C. Directory traversal
+D. Replay attack
+
+## 60.
+
+Which DDoS type sends traffic that appears to come from the victim so responses flood the victim?
+
+A. Reflected DDoS
+B. Birthday attack
+C. Firmware attack
+D. Race condition
+
+---
+
+## 61.
+
+Which attack positions an attacker between two communicating parties?
+
+A. On-path attack
+B. Honeytoken
+C. Secure enclave
+D. Data masking
+
+## 62.
+
+Which attack captures valid data and sends it again later?
+
+A. Replay attack
+B. Salting attack
+C. Tokenization attack
+D. Compression attack
+
+## 63.
+
+Which application attack attempts to move outside the intended folder path?
+
+A. Directory traversal
+B. DMARC failure
+C. VLAN segmentation
+D. Bluejacking
+
+## 64.
+
+Which application attack allows an attacker to gain higher permissions than intended?
+
+A. Privilege escalation
+B. Sandboxing
+C. Resource reuse
+D. Data minimization
+
+## 65.
+
+Which application attack involves falsifying requests, identities, or data?
+
+A. Forgery
+B. Hashing
+C. Journaling
+D. Federation
+
+## 66.
+
+Which cryptographic attack forces systems to use a weaker protocol or algorithm?
+
+A. Downgrade attack
+B. Replay attack
+C. Smishing
+D. Pretexting
+
+## 67.
+
+Which cryptographic issue occurs when two different inputs produce the same hash output?
+
+A. Collision
+B. Encryption
+C. Segmentation
+D. Tokenization
+
+## 68.
+
+Which cryptographic attack exploits the mathematics of probability to find hash collisions?
+
+A. Birthday attack
+B. DDoS attack
+C. Evil twin
+D. Watering hole
+
+## 69.
+
+Which password attack tries every possible password combination?
+
+A. Brute force
+B. Password spraying
+C. Credential stuffing
+D. Typosquatting
+
+## 70.
+
+Which password attack uses one or a few common passwords across many accounts?
+
+A. Password spraying
+B. Brute force
+C. Birthday attack
+D. Race condition
+
+---
+
+## 71.
+
+Which password attack uses previously leaked username and password pairs?
+
+A. Credential stuffing
+B. Buffer overflow
+C. Rootkit
+D. RFID cloning
+
+## 72.
+
+Which indicator may show too many failed login attempts?
+
+A. Account lockout
+B. Data sovereignty
+C. Certificate renewal
+D. Secure boot
+
+## 73.
+
+Which indicator may show the same account being used in multiple places at the same time?
+
+A. Concurrent session usage
+B. Hot site
+C. Hash collision
+D. Risk tolerance
+
+## 74.
+
+Which indicator may show login activity from locations that are geographically unrealistic?
+
+A. Impossible travel
+B. Legal hold
+C. Encryption at rest
+D. Data retention
+
+## 75.
+
+Which indicator may show that malware or attackers deleted evidence?
+
+A. Missing logs
+B. Data classification
+C. Full backup
+D. Secure baseline
+
+## 76.
+
+Which indicator may show excessive CPU, memory, disk, or network usage?
+
+A. Resource consumption
+B. Right-to-audit
+C. Key escrow
+D. Geolocation
+
+## 77.
+
+Which mitigation technique divides networks or systems to reduce lateral movement?
+
+A. Segmentation
+B. Open service ports
+C. Default credentials
+D. Data exfiltration
+
+## 78.
+
+Which mitigation technique assigns permissions based on what users need to do?
+
+A. Access control
+B. Phishing
+C. Bloatware
+D. Downgrade
+
+## 79.
+
+Which mitigation technique allows only approved applications to run?
+
+A. Application allow list
+B. Credential replay
+C. Typosquatting
+D. Shadow IT
+
+## 80.
+
+Which mitigation technique separates a risky system or process from others?
+
+A. Isolation
+B. Blackmail
+C. Smishing
+D. Collision
+
+---
+
+## 81.
+
+Which mitigation technique applies security updates to remove known vulnerabilities?
+
+A. Patching
+B. Phishing
+C. Exfiltration
+D. Watering hole
+
+## 82.
+
+Which mitigation technique protects data confidentiality even if it is accessed by unauthorized users?
+
+A. Encryption
+B. Open ports
+C. Default passwords
+D. Pretexting
+
+## 83.
+
+Which mitigation technique detects suspicious activity over time?
+
+A. Monitoring
+B. Jailbreaking
+C. Resource reuse
+D. Birthday attack
+
+## 84.
+
+Which principle gives users only the permissions needed for their job?
+
+A. Least privilege
+B. Service disruption
+C. Nation-state
+D. Memory injection
+
+## 85.
+
+Which hardening technique reduces attack surface by uninstalling unused applications?
+
+A. Removal of unnecessary software
+B. Keeping default passwords
+C. Opening all ports
+D. Disabling endpoint protection
+
+---
+
+# Answer Key
+
+1. A
+2. C
+3. A
+4. A
+5. A
+6. A
+7. A
+8. A
+9. A
+10. A
+11. A
+12. A
+13. A
+14. A
+15. A
+16. A
+17. A
+18. A
+19. A
+20. A
+21. A
+22. A
+23. A
+24. A
+25. A
+26. A
+27. A
+28. A
+29. A
+30. A
+31. A
+32. A
+33. A
+34. A
+35. A
+36. A
+37. A
+38. A
+39. A
+40. A
+41. A
+42. A
+43. A
+44. A
+45. A
+46. A
+47. A
+48. A
+49. A
+50. A
+51. A
+52. A
+53. A
+54. A
+55. A
+56. A
+57. A
+58. A
+59. A
+60. A
+61. A
+62. A
+63. A
+64. A
+65. A
+66. A
+67. A
+68. A
+69. A
+70. A
+71. A
+72. A
+73. A
+74. A
+75. A
+76. A
+77. A
+78. A
+79. A
+80. A
+81. A
+82. A
+83. A
+84. A
+85. A

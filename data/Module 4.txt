@@ -1,0 +1,1022 @@
+## 1.
+
+Which process defines an approved secure configuration for systems?
+
+A. Secure baseline
+B. Risk transference
+C. Data masking
+D. Chain of custody
+
+## 2.
+
+Which phase of secure baselines involves creating the initial approved configuration?
+
+A. Establish
+B. Eradicate
+C. Transfer
+D. Archive
+
+## 3.
+
+Which phase of secure baselines applies the approved configuration to systems?
+
+A. Deploy
+B. Exfiltrate
+C. Revoke
+D. Enumerate
+
+## 4.
+
+Which phase of secure baselines keeps systems aligned with the approved configuration over time?
+
+A. Maintain
+B. Delete
+C. Transfer
+D. Outsource
+
+## 5.
+
+Which hardening target includes laptops and desktop computers?
+
+A. Workstations
+B. Certificate authorities
+C. SIEM rules
+D. Data subjects
+
+## 6.
+
+Which hardening target includes network devices that forward traffic between networks?
+
+A. Routers
+B. Hash values
+C. Tokens
+D. Legal holds
+
+## 7.
+
+Which hardening target is commonly associated with industrial environments?
+
+A. ICS/SCADA
+B. OAuth
+C. DMARC
+D. SAML
+
+## 8.
+
+Which hardening action reduces attack surface by removing unused applications?
+
+A. Remove unnecessary software
+B. Use default passwords
+C. Open all ports
+D. Disable logging
+
+## 9.
+
+Which hardening action reduces risk from unnecessary network services?
+
+A. Disable unused ports and protocols
+B. Increase user privileges
+C. Share admin passwords
+D. Disable endpoint protection
+
+## 10.
+
+Which hardening action protects endpoints from malware?
+
+A. Install endpoint protection
+B. Disable host firewalls
+C. Remove authentication
+D. Allow all applications
+
+---
+
+## 11.
+
+Which tool controls and manages mobile devices in an enterprise?
+
+A. MDM
+B. HSM
+C. IDS
+D. TPM
+
+## 12.
+
+Which mobile deployment model allows employees to use personal devices for work?
+
+A. BYOD
+B. COPE
+C. CYOD
+D. VDI
+
+## 13.
+
+Which mobile deployment model provides company-owned devices that employees may also use personally?
+
+A. COPE
+B. BYOD
+C. CYOD
+D. RTOS
+
+## 14.
+
+Which mobile deployment model allows employees to choose from approved company devices?
+
+A. CYOD
+B. BYOD
+C. Honeynet
+D. SASE
+
+## 15.
+
+Which wireless planning activity identifies signal coverage and interference?
+
+A. Site survey
+B. Key escrow
+C. Legal hold
+D. Risk register
+
+## 16.
+
+Which wireless planning tool visually maps signal strength in an area?
+
+A. Heat map
+B. Hash map
+C. Access list
+D. Certificate chain
+
+## 17.
+
+Which modern Wi-Fi security standard is preferred for strong wireless protection?
+
+A. WPA3
+B. WEP
+C. WPA
+D. Open authentication
+
+## 18.
+
+Which protocol is commonly used for centralized authentication in enterprise Wi-Fi?
+
+A. RADIUS
+B. FTP
+C. Telnet
+D. POP3
+
+## 19.
+
+Which application security practice checks input before it is processed?
+
+A. Input validation
+B. Open relay
+C. Port forwarding
+D. Data exfiltration
+
+## 20.
+
+Which application security feature helps protect session identifiers in browsers?
+
+A. Secure cookies
+B. Default credentials
+C. Open ports
+D. Public shares
+
+---
+
+## 21.
+
+Which testing method analyzes source code without running the application?
+
+A. Static code analysis
+B. Dynamic analysis
+C. Packet capture
+D. Full backup
+
+## 22.
+
+Which testing method analyzes the application while it is running?
+
+A. Dynamic analysis
+B. Static analysis
+C. Hashing
+D. Tokenization
+
+## 23.
+
+Which technique runs suspicious code in an isolated environment?
+
+A. Sandboxing
+B. Federation
+C. Replication
+D. Clustering
+
+## 24.
+
+Which asset management phase involves purchasing or obtaining systems?
+
+A. Acquisition/procurement
+B. Lessons learned
+C. Credential stuffing
+D. Legal hold
+
+## 25.
+
+Which asset management concept identifies who is responsible for an asset?
+
+A. Ownership
+B. Collision
+C. Replay
+D. Evasion
+
+## 26.
+
+Which asset management concept identifies the sensitivity or importance of an asset?
+
+A. Classification
+B. Load balancing
+C. Jailbreaking
+D. Spoofing
+
+## 27.
+
+Which asset management activity lists hardware, software, or data assets?
+
+A. Inventory
+B. Smishing
+C. Buffer overflow
+D. Birthday attack
+
+## 28.
+
+Which asset management activity discovers and counts assets or services?
+
+A. Enumeration
+B. Eradication
+C. Obfuscation
+D. Risk avoidance
+
+## 29.
+
+Which disposal method securely removes data from media?
+
+A. Sanitization
+B. Federation
+C. Escalation
+D. Spraying
+
+## 30.
+
+Which disposal method physically renders media unusable?
+
+A. Destruction
+B. Tokenization
+C. Provisioning
+D. Authorization
+
+---
+
+## 31.
+
+Which document proves that disposal or destruction was completed properly?
+
+A. Certificate of destruction
+B. Certificate signing request
+C. Public certificate
+D. Warranty card
+
+## 32.
+
+Which policy determines how long data should be kept?
+
+A. Data retention
+B. Port security
+C. Input validation
+D. Threat hunting
+
+## 33.
+
+Which vulnerability identification method scans systems for known weaknesses?
+
+A. Vulnerability scan
+B. Legal hold
+C. Data masking
+D. Geofencing
+
+## 34.
+
+Which application security method analyzes code before runtime?
+
+A. Static analysis
+B. DLP
+C. SPF
+D. SNMP trap
+
+## 35.
+
+Which application security method tests applications during execution?
+
+A. Dynamic analysis
+B. Hashing
+C. RAID
+D. Full backup
+
+## 36.
+
+Which activity monitors third-party libraries or dependencies for known vulnerabilities?
+
+A. Package monitoring
+B. Badge cloning
+C. Tailgating
+D. Key exchange
+
+## 37.
+
+Which threat intelligence source uses public information?
+
+A. OSINT
+B. HSM
+C. TPM
+D. RAID
+
+## 38.
+
+Which threat intelligence source may include paid or vendor-provided feeds?
+
+A. Proprietary/third-party feed
+B. Open wireless network
+C. Static route
+D. Default gateway
+
+## 39.
+
+Which threat intelligence source may include underground markets and leaked data?
+
+A. Dark web
+B. Public DNS only
+C. DHCP pool
+D. Local printer queue
+
+## 40.
+
+Which security program encourages external researchers to report vulnerabilities responsibly?
+
+A. Bug bounty program
+B. Backup rotation
+C. Key escrow
+D. Hot site
+
+---
+
+## 41.
+
+Which vulnerability analysis result means the scanner reported an issue that is not actually present?
+
+A. False positive
+B. True positive
+C. False negative
+D. True negative
+
+## 42.
+
+Which vulnerability analysis result means the scanner missed a real issue?
+
+A. False negative
+B. False positive
+C. True positive
+D. True negative
+
+## 43.
+
+Which vulnerability scoring system rates severity from 0.0 to 10.0?
+
+A. CVSS
+B. CVE
+C. SAML
+D. SPF
+
+## 44.
+
+Which identifier tracks publicly known vulnerabilities?
+
+A. CVE
+B. SLA
+C. RPO
+D. SSO
+
+## 45.
+
+Which factor helps prioritize vulnerabilities based on business impact?
+
+A. Industry or organizational impact
+B. Keyboard layout
+C. Monitor resolution
+D. Printer type
+
+## 46.
+
+Which remediation action applies software updates to fix vulnerabilities?
+
+A. Patching
+B. Phishing
+C. Spoofing
+D. Tailgating
+
+## 47.
+
+Which remediation action reduces impact by separating vulnerable systems?
+
+A. Segmentation
+B. Smishing
+C. Credential stuffing
+D. Replay
+
+## 48.
+
+Which remediation option is used when the primary fix is not immediately possible?
+
+A. Compensating control
+B. Data subject request
+C. Public key
+D. Wireless heat map
+
+## 49.
+
+Which process confirms that remediation fixed the vulnerability?
+
+A. Validation of remediation
+B. Typosquatting
+C. Data exfiltration
+D. Shadow IT
+
+## 50.
+
+Which validation method scans again after a fix is applied?
+
+A. Rescanning
+B. Whaling
+C. Tokenization
+D. Watering hole
+
+---
+
+## 51.
+
+Which tool aggregates and correlates security logs from many sources?
+
+A. SIEM
+B. VPN
+C. RAID
+D. DHCP
+
+## 52.
+
+Which monitoring activity stores logs for future review or compliance?
+
+A. Archiving
+B. Side loading
+C. Jailbreaking
+D. Federation
+
+## 53.
+
+Which monitoring activity reduces false alerts by adjusting detection rules?
+
+A. Alert tuning
+B. Key stretching
+C. Data masking
+D. Port knocking
+
+## 54.
+
+Which response action isolates a suspicious file or system?
+
+A. Quarantine
+B. Repudiation
+C. Data sovereignty
+D. Deregulation
+
+## 55.
+
+Which protocol can send traps from devices to a monitoring system?
+
+A. SNMP
+B. FTP
+C. Telnet
+D. POP3
+
+## 56.
+
+Which SNMP port is commonly used for polling?
+
+A. UDP 161
+B. TCP 443
+C. TCP 3389
+D. UDP 53
+
+## 57.
+
+Which SNMP port is commonly used for traps?
+
+A. UDP 162
+B. TCP 22
+C. TCP 25
+D. UDP 123
+
+## 58.
+
+Which tool summarizes network flow information such as source, destination, and traffic volume?
+
+A. NetFlow
+B. TPM
+C. HSM
+D. OCSP
+
+## 59.
+
+Which security tool prevents sensitive information from leaving an organization?
+
+A. DLP
+B. DHCP
+C. DNSSEC
+D. NAT
+
+## 60.
+
+Which firewall concept means traffic is denied unless explicitly allowed?
+
+A. Implicit deny
+B. Default allow
+C. Fail-open only
+D. Open relay
+
+---
+
+## 61.
+
+Which firewall rule order is usually safest?
+
+A. Specific rules before general rules
+B. General rules before specific rules
+C. Deny rules never used
+D. Random order
+
+## 62.
+
+Which firewall object allows or blocks traffic based on source, destination, protocol, or port?
+
+A. ACL
+B. CSR
+C. RPO
+D. ARO
+
+## 63.
+
+Which port is used by SSH by default?
+
+A. TCP 22
+B. TCP 80
+C. UDP 123
+D. TCP 25
+
+## 64.
+
+Which port is used by HTTPS by default?
+
+A. TCP 443
+B. TCP 23
+C. UDP 161
+D. TCP 110
+
+## 65.
+
+Which port is used by RDP by default?
+
+A. TCP 3389
+B. TCP 53
+C. UDP 67
+D. TCP 993
+
+## 66.
+
+Which web filtering feature checks URLs against categories or reputation?
+
+A. URL scanning/content categorization
+B. Disk encryption
+C. Key escrow
+D. Certificate pinning only
+
+## 67.
+
+Which operating system security framework is commonly associated with Linux mandatory access controls?
+
+A. SELinux
+B. BitLocker
+C. FileVault
+D. WPA3
+
+## 68.
+
+Which Windows feature centrally manages security and configuration settings in a domain?
+
+A. Group Policy
+B. NetFlow
+C. OCSP
+D. SPF
+
+## 69.
+
+Which email security mechanism defines authorized sending servers for a domain?
+
+A. SPF
+B. POP3
+C. IMAP
+D. SNMP
+
+## 70.
+
+Which email security mechanism uses cryptographic signatures to verify messages?
+
+A. DKIM
+B. Telnet
+C. FTP
+D. NAT
+
+---
+
+## 71.
+
+Which email security framework uses SPF and DKIM results to define policy and reporting?
+
+A. DMARC
+B. RADIUS
+C. TACACS+
+D. SFTP
+
+## 72.
+
+Which endpoint tool detects and responds to threats on endpoints?
+
+A. EDR
+B. DNS
+C. RAID
+D. VLAN
+
+## 73.
+
+Which solution extends detection and response across endpoints, networks, cloud, and other telemetry?
+
+A. XDR
+B. WEP
+C. FTP
+D. DHCP
+
+## 74.
+
+Which technology analyzes behavior patterns to detect unusual user activity?
+
+A. User behavior analytics
+B. Static routing
+C. RAID mirroring
+D. Wireless roaming
+
+## 75.
+
+Which IAM process creates accounts and grants initial access?
+
+A. Provisioning
+B. Sanitization
+C. Containment
+D. Obfuscation
+
+## 76.
+
+Which IAM process removes access when a user leaves?
+
+A. De-provisioning
+B. Federation
+C. Tokenization
+D. Salting
+
+## 77.
+
+Which IAM process verifies a person’s claimed identity before account creation?
+
+A. Identity proofing
+B. Key stretching
+C. Replay
+D. Port mirroring
+
+## 78.
+
+Which IAM concept allows identities from one organization or domain to access resources in another?
+
+A. Federation
+B. Buffer overflow
+C. Data masking
+D. DNS poisoning
+
+## 79.
+
+Which IAM feature allows users to authenticate once and access multiple services?
+
+A. SSO
+B. DLP
+C. CVSS
+D. MTBF
+
+## 80.
+
+Which protocol is commonly used for directory access and identity queries?
+
+A. LDAP
+B. SMTP
+C. FTP
+D. SNMP
+
+---
+
+## 81.
+
+Which protocol is commonly used for delegated authorization?
+
+A. OAuth
+B. POP3
+C. ICMP
+D. TFTP
+
+## 82.
+
+Which protocol is commonly used for federated identity assertions?
+
+A. SAML
+B. ARP
+C. NTP
+D. DNS
+
+## 83.
+
+Which access control model uses labels such as Secret and Top Secret?
+
+A. MAC
+B. DAC
+C. RBAC
+D. ABAC
+
+## 84.
+
+Which access control model lets the data owner decide permissions?
+
+A. DAC
+B. MAC
+C. Rule-based
+D. Mandatory vacation
+
+## 85.
+
+Which access control model assigns permissions based on job function?
+
+A. RBAC
+B. MAC
+C. DAC
+D. Rule-based only
+
+## 86.
+
+Which access control model uses conditions such as time, location, role, or device status?
+
+A. ABAC
+B. MAC
+C. DAC
+D. Static ACL only
+
+## 87.
+
+Which authentication factor is a password?
+
+A. Something you know
+B. Something you have
+C. Something you are
+D. Somewhere you are
+
+## 88.
+
+Which authentication factor is a hardware token?
+
+A. Something you have
+B. Something you know
+C. Somewhere you are
+D. Something you do
+
+## 89.
+
+Which authentication factor is a fingerprint?
+
+A. Something you are
+B. Something you know
+C. Something you have
+D. Somewhere you are
+
+## 90.
+
+Which privileged access management method grants admin access only when needed?
+
+A. Just-in-time permissions
+B. Shared administrator accounts
+C. Default credentials
+D. Permanent root access
+
+---
+
+## 91.
+
+Which PAM feature stores privileged credentials securely?
+
+A. Password vaulting
+B. Open relay
+C. Public share
+D. Anonymous login
+
+## 92.
+
+Which automation use case creates accounts automatically based on predefined workflows?
+
+A. User provisioning
+B. Evil twin
+C. SQL injection
+D. DNS poisoning
+
+## 93.
+
+Which automation use case creates incidents automatically from alerts?
+
+A. Ticket creation
+B. Data masking
+C. Rainbow table
+D. Warm site
+
+## 94.
+
+Which automation benefit helps deploy systems consistently and securely?
+
+A. Enforcing baselines
+B. Increasing shadow IT
+C. Removing all monitoring
+D. Allowing default passwords
+
+## 95.
+
+Which automation risk occurs when an organization keeps delaying a proper long-term fix?
+
+A. Technical debt
+B. Non-repudiation
+C. Data sovereignty
+D. High availability
+
+## 96.
+
+Which incident response phase includes plans, contacts, tools, training, and procedures?
+
+A. Preparation
+B. Recovery
+C. Lessons learned
+D. Eradication
+
+## 97.
+
+Which incident response phase determines whether an event is a real incident?
+
+A. Detection and analysis
+B. Recovery
+C. Sanitization
+D. Risk transfer
+
+## 98.
+
+Which incident response phase limits damage and prevents spread?
+
+A. Containment
+B. Preparation
+C. Post-incident activity
+D. Data retention
+
+## 99.
+
+Which incident response phase removes malware, disables breached accounts, and fixes vulnerabilities?
+
+A. Eradication
+B. Detection
+C. Preparation
+D. Reporting
+
+## 100.
+
+Which forensic process documents who handled evidence, when, and why?
+
+A. Chain of custody
+B. Federation
+C. Tokenization
+D. Load balancing
+
+---
+
+# Answer Key
+
+1. A
+2. A
+3. A
+4. A
+5. A
+6. A
+7. A
+8. A
+9. A
+10. A
+11. A
+12. A
+13. A
+14. A
+15. A
+16. A
+17. A
+18. A
+19. A
+20. A
+21. A
+22. A
+23. A
+24. A
+25. A
+26. A
+27. A
+28. A
+29. A
+30. A
+31. A
+32. A
+33. A
+34. A
+35. A
+36. A
+37. A
+38. A
+39. A
+40. A
+41. A
+42. A
+43. A
+44. A
+45. A
+46. A
+47. A
+48. A
+49. A
+50. A
+51. A
+52. A
+53. A
+54. A
+55. A
+56. A
+57. A
+58. A
+59. A
+60. A
+61. A
+62. A
+63. A
+64. A
+65. A
+66. A
+67. A
+68. A
+69. A
+70. A
+71. A
+72. A
+73. A
+74. A
+75. A
+76. A
+77. A
+78. A
+79. A
+80. A
+81. A
+82. A
+83. A
+84. A
+85. A
+86. A
+87. A
+88. A
+89. A
+90. A
+91. A
+92. A
+93. A
+94. A
+95. A
+96. A
+97. A
+98. A
+99. A
+100. A

@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Module 5 - 530656</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #1f2933;
+      --muted: #667085;
+      --line: #d6dbe3;
+      --accent: #2563eb;
+      --accent-soft: #e8f0ff;
+      --ok: #15803d;
+      --bad: #b42318;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .bar {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .status {
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .question {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .start-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+
+    .start-panel h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .start-panel p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .question-title {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .number {
+      flex: 0 0 auto;
+      min-width: 34px;
+      color: var(--accent);
+    }
+
+    .options {
+      display: grid;
+      gap: 8px;
+    }
+
+    label.option {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 10px 12px;
+      cursor: pointer;
+      background: #fff;
+    }
+
+    label.option:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    label.option.selected {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    label.option.correct {
+      border-color: var(--ok);
+      background: #eaf8ef;
+    }
+
+    label.option.wrong {
+      border-color: var(--bad);
+      background: #fff0ee;
+    }
+
+    input[type="radio"] {
+      margin-top: 4px;
+    }
+
+    .actions {
+      position: sticky;
+      bottom: 0;
+      background: rgba(246, 247, 249, 0.96);
+      border-top: 1px solid var(--line);
+      padding: 14px 0;
+      margin-top: 20px;
+    }
+
+    .actions-inner {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      border-radius: 7px;
+      padding: 10px 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #fff;
+      color: var(--accent);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 110px;
+      margin-top: 12px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 13px;
+      resize: vertical;
+    }
+
+    .result {
+      margin-top: 12px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 640px) {
+      .bar {
+        align-items: flex-start;
+      }
+
+      h1 {
+        font-size: 18px;
+      }
+
+      .question {
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <h1 id="quizTitle">Security Quiz</h1>
+      <div class="status">
+        <span>Code: <strong id="quizCode"></strong></span>
+        <span><span id="answeredCount">0</span>/<span id="totalCount">0</span> answered</span>
+        <span>Time: <strong id="timerText">00:00:00</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="start-panel" id="startPanel">
+      <h2 id="startTitle"></h2>
+      <p>Ma de: <strong id="startCode"></strong> · So cau: <strong id="startTotal"></strong></p>
+      <button type="button" id="startButton">Bat dau lam bai</button>
+    </section>
+
+    <form id="quizForm" class="hidden"></form>
+
+    <section class="actions hidden" id="actionsPanel">
+      <div class="actions-inner">
+        <button type="button" id="gradeButton">Chấm bài</button>
+        <button type="button" class="secondary" id="exportButton">Xuất chuỗi kết quả</button>
+        <button type="button" class="secondary" id="copyButton">Copy chuỗi</button>
+        <button type="button" class="secondary" id="resetButton">Làm lại</button>
+      </div>
+      <div class="result" id="scoreText"></div>
+      <textarea id="exportText" readonly placeholder="Chuỗi kết quả sẽ hiện ở đây sau khi bấm Xuất chuỗi kết quả."></textarea>
+    </section>
+  </main>
+
+  <script>
+    const quizName = "Module 5";
+    const quizCode = "530656";
+    const questions = [{"question": "Which document defines high-level security expectations for an organization?", "options": {"A": "Procedure", "B": "Policy", "C": "Log file", "D": "Vulnerability scan"}, "answer": "B"}, {"question": "Which document provides step-by-step instructions for performing a task?", "options": {"A": "Standard", "B": "Policy", "C": "Procedure", "D": "MOU"}, "answer": "C"}, {"question": "Which document defines mandatory technical requirements, such as password length or encryption strength?", "options": {"A": "Standard", "B": "Guideline", "C": "Risk register", "D": "SLA"}, "answer": "A"}, {"question": "Which document is usually recommended but not always mandatory?", "options": {"A": "Guideline", "B": "Policy", "C": "Contract", "D": "Regulation"}, "answer": "A"}, {"question": "An organization requires all laptops to use full-disk encryption. What type of document most likely defines this specific requirement?", "options": {"A": "Standard", "B": "MOU", "C": "NDA", "D": "Risk appetite statement"}, "answer": "A"}, {"question": "Which term refers to the rules, processes, and structures used to direct and control an organization’s security program?", "options": {"A": "Governance", "B": "Exploitation", "C": "Encryption", "D": "Reconnaissance"}, "answer": "A"}, {"question": "Which policy defines how employees may use company systems and networks?", "options": {"A": "NDA", "B": "SLA", "C": "AUP", "D": "SOW"}, "answer": "C"}, {"question": "Which policy commonly covers password handling, data protection, and acceptable system behavior?", "options": {"A": "Information security policy", "B": "Sales policy", "C": "Procurement invoice", "D": "Shipping policy"}, "answer": "A"}, {"question": "Which concept ensures employees understand and acknowledge security rules?", "options": {"A": "Policy communication", "B": "Buffer overflow", "C": "DNS filtering", "D": "Packet capture"}, "answer": "A"}, {"question": "Which security consideration is MOST related to laws such as HIPAA or SOX?", "options": {"A": "Regulatory", "B": "Physical", "C": "Cryptographic", "D": "Wireless"}, "answer": "A"}, {"question": "Which security consideration deals with breach notification requirements and legal holds?", "options": {"A": "Legal", "B": "Tokenization", "C": "Routing", "D": "Load balancing"}, "answer": "A"}, {"question": "Which security consideration varies depending on country or region?", "options": {"A": "Geographical", "B": "Hashing", "C": "Sandboxing", "D": "Compression"}, "answer": "A"}, {"question": "Which industry would be MOST concerned with HIPAA requirements?", "options": {"A": "Healthcare", "B": "Retail only", "C": "Gaming", "D": "Transportation only"}, "answer": "A"}, {"question": "Which industry is commonly associated with isolated and protected control systems?", "options": {"A": "Public utilities", "B": "Social media", "C": "Entertainment", "D": "E-commerce only"}, "answer": "A"}, {"question": "Which data role is accountable for a specific set of business data?", "options": {"A": "Data owner", "B": "Data processor", "C": "Penetration tester", "D": "Security guard"}, "answer": "A"}, {"question": "Which role determines the purpose and means of processing personal data?", "options": {"A": "Data controller", "B": "Data processor", "C": "Data subject", "D": "Risk owner"}, "answer": "A"}, {"question": "Which role processes personal data on behalf of another party?", "options": {"A": "Data processor", "B": "Data owner", "C": "Data subject", "D": "Auditor"}, "answer": "A"}, {"question": "Which role is the individual whose personal data is being processed?", "options": {"A": "Data subject", "B": "Data custodian", "C": "Data owner", "D": "Vendor manager"}, "answer": "A"}, {"question": "Which role is responsible for maintaining data accuracy, privacy, security, and access rights?", "options": {"A": "Data custodian/steward", "B": "Data subject", "C": "Risk transference provider", "D": "External auditor"}, "answer": "A"}, {"question": "A payroll department decides what payroll data is collected and why. What role is it performing?", "options": {"A": "Data controller", "B": "Data processor", "C": "Data subject", "D": "Data custodian only"}, "answer": "A"}, {"question": "A third-party payroll company stores and processes employee payroll data for another company. What role is it performing?", "options": {"A": "Data processor", "B": "Data subject", "C": "Data owner", "D": "Audit committee"}, "answer": "A"}, {"question": "Which process identifies potential risks before they become problems?", "options": {"A": "Risk identification", "B": "Key stretching", "C": "Port mirroring", "D": "Load balancing"}, "answer": "A"}, {"question": "Which type of risk assessment is performed at regular intervals?", "options": {"A": "Recurring assessment", "B": "Ad hoc assessment", "C": "One-time assessment", "D": "Blind assessment"}, "answer": "A"}, {"question": "A CEO hears about a new attack at a conference and requests a temporary committee to evaluate exposure. What type of risk assessment is this?", "options": {"A": "Ad hoc", "B": "Recurring", "C": "Annual mandated", "D": "Continuous"}, "answer": "A"}, {"question": "Which risk assessment method uses opinions, categories, or labels such as low, medium, and high?", "options": {"A": "Qualitative", "B": "Quantitative", "C": "Cryptographic", "D": "Forensic"}, "answer": "A"}, {"question": "Which risk assessment method uses numerical values and financial calculations?", "options": {"A": "Quantitative", "B": "Qualitative", "C": "Heuristic", "D": "Passive"}, "answer": "A"}, {"question": "What does ARO stand for?", "options": {"A": "Annualized Rate of Occurrence", "B": "Asset Recovery Objective", "C": "Approved Risk Order", "D": "Annual Recovery Operation"}, "answer": "A"}, {"question": "What does SLE stand for?", "options": {"A": "Single Loss Expectancy", "B": "Security Log Event", "C": "System Loss Estimate", "D": "Standard Legal Exception"}, "answer": "A"}, {"question": "Which formula is correct?", "options": {"A": "SLE = Asset Value × Exposure Factor", "B": "SLE = ARO × ALE", "C": "SLE = RTO × RPO", "D": "SLE = MTTR × MTBF"}, "answer": "A"}, {"question": "Which formula is correct?", "options": {"A": "ALE = ARO × SLE", "B": "ALE = EF × RTO", "C": "ALE = RPO × SLE", "D": "ALE = MOU × SLA"}, "answer": "A"}, {"question": "What does exposure factor represent?", "options": {"A": "Percentage of asset value lost during an incident", "B": "Number of users affected by a password reset", "C": "Amount of time needed to restore a server", "D": "Number of alerts generated by a SIEM"}, "answer": "A"}, {"question": "Which term describes the organization’s broad willingness to take risk?", "options": {"A": "Risk appetite", "B": "Risk register", "C": "Risk owner", "D": "Risk exception"}, "answer": "A"}, {"question": "Which term describes acceptable variance from the organization’s risk appetite?", "options": {"A": "Risk tolerance", "B": "Risk avoidance", "C": "Risk transference", "D": "Risk rejection"}, "answer": "A"}, {"question": "Which document tracks identified risks, owners, indicators, and mitigation plans?", "options": {"A": "Risk register", "B": "NDA", "C": "SOW", "D": "AUP"}, "answer": "A"}, {"question": "Who is responsible for managing a specific identified risk?", "options": {"A": "Risk owner", "B": "Data subject", "C": "Certificate authority", "D": "Threat actor"}, "answer": "A"}, {"question": "Which strategy accepts the risk as a business decision?", "options": {"A": "Risk acceptance", "B": "Risk avoidance", "C": "Risk transference", "D": "Risk mitigation"}, "answer": "A"}, {"question": "Which strategy stops the risky activity entirely?", "options": {"A": "Risk avoidance", "B": "Risk acceptance", "C": "Risk transference", "D": "Risk exception"}, "answer": "A"}, {"question": "Which strategy reduces risk by implementing controls?", "options": {"A": "Risk mitigation", "B": "Risk acceptance", "C": "Risk transfer", "D": "Risk rejection"}, "answer": "A"}, {"question": "Which strategy moves risk to another party, such as through cyber insurance?", "options": {"A": "Risk transference", "B": "Risk avoidance", "C": "Risk acceptance", "D": "Risk tolerance"}, "answer": "A"}, {"question": "A company cannot meet a security policy requirement due to a critical business constraint and receives formal approval. What is this?", "options": {"A": "Exception or exemption", "B": "Vulnerability scan", "C": "Data sovereignty", "D": "Evidence destruction"}, "answer": "A"}, {"question": "Which business impact category is usually the highest priority?", "options": {"A": "Life", "B": "Reputation", "C": "Finance", "D": "Property"}, "answer": "A"}, {"question": "Which metric defines the maximum acceptable time to restore a service?", "options": {"A": "RTO", "B": "RPO", "C": "ARO", "D": "EF"}, "answer": "A"}, {"question": "Which metric defines the maximum acceptable amount of data loss?", "options": {"A": "RPO", "B": "RTO", "C": "MTBF", "D": "MTTR"}, "answer": "A"}, {"question": "Which metric represents average time required to repair a failed system?", "options": {"A": "MTTR", "B": "MTBF", "C": "RPO", "D": "ARO"}, "answer": "A"}, {"question": "Which metric represents average time between failures?", "options": {"A": "MTBF", "B": "MTTR", "C": "RTO", "D": "SLE"}, "answer": "A"}, {"question": "Which process evaluates vendor security before doing business with them?", "options": {"A": "Due diligence", "B": "Packet sniffing", "C": "Privilege escalation", "D": "Hashing"}, "answer": "A"}, {"question": "Which third-party risk concern occurs when personal interests may compromise judgment?", "options": {"A": "Conflict of interest", "B": "Salting", "C": "Tokenization", "D": "Risk avoidance"}, "answer": "A"}, {"question": "Which activity continues after a vendor contract is signed?", "options": {"A": "Vendor monitoring", "B": "Initial exploitation", "C": "Sanitization only", "D": "Password spraying"}, "answer": "A"}, {"question": "Which document gathers vendor security information during assessment?", "options": {"A": "Questionnaire", "B": "Public key", "C": "Honeypot", "D": "Rootkit"}, "answer": "A"}, {"question": "Which contract clause allows an organization to verify a third party’s security controls?", "options": {"A": "Right-to-audit", "B": "Default deny", "C": "Least privilege", "D": "Geofencing"}, "answer": "A"}, {"question": "Which agreement defines uptime, response time, and service expectations?", "options": {"A": "SLA", "B": "NDA", "C": "MOU", "D": "AUP"}, "answer": "A"}, {"question": "Which agreement protects confidential information shared between parties?", "options": {"A": "NDA", "B": "SLA", "C": "BPA", "D": "RTO"}, "answer": "A"}, {"question": "Which agreement is usually an informal statement of common goals?", "options": {"A": "MOU", "B": "SLA", "C": "NDA", "D": "AUP"}, "answer": "A"}, {"question": "Which agreement is a broad legal framework for future work?", "options": {"A": "MSA", "B": "CVSS", "C": "RPO", "D": "GDPR"}, "answer": "A"}, {"question": "Which document defines specific deliverables, scope, schedule, and acceptance criteria?", "options": {"A": "SOW", "B": "AUP", "C": "SLA", "D": "Data inventory"}, "answer": "A"}, {"question": "Which agreement supports recurring business transactions between partners?", "options": {"A": "BPA", "B": "Hash value", "C": "Penetration test report", "D": "Risk threshold"}, "answer": "A"}, {"question": "Which term means meeting laws, regulations, standards, or policies?", "options": {"A": "Compliance", "B": "Exploitation", "C": "Containment", "D": "Obfuscation"}, "answer": "A"}, {"question": "Which compliance reporting is used inside the organization to track compliance efforts?", "options": {"A": "Internal reporting", "B": "External reporting", "C": "Passive reconnaissance", "D": "Credential reporting"}, "answer": "A"}, {"question": "Which compliance reporting is required by regulators or external bodies?", "options": {"A": "External reporting", "B": "Internal reporting", "C": "Self-signed reporting", "D": "Informal reporting"}, "answer": "A"}, {"question": "Which law is associated with healthcare information protection?", "options": {"A": "HIPAA", "B": "SMTP", "C": "SAML", "D": "CVE"}, "answer": "A"}, {"question": "Which law is associated with financial institution privacy disclosures?", "options": {"A": "GLBA", "B": "WPA3", "C": "LDAP", "D": "DMARC"}, "answer": "A"}, {"question": "Which concept refers to the right of individuals to have certain personal data removed?", "options": {"A": "Right to be forgotten", "B": "Right to exploit", "C": "Right to scan", "D": "Right to escalate"}, "answer": "A"}, {"question": "Which privacy concept requires knowing what data the organization stores?", "options": {"A": "Data inventory", "B": "DNS enumeration", "C": "Port knocking", "D": "Packet filtering"}, "answer": "A"}, {"question": "Which audit can be performed by the organization itself?", "options": {"A": "Internal audit", "B": "External audit", "C": "Red team only", "D": "Blind test only"}, "answer": "A"}, {"question": "Which audit is commonly performed by an independent third party?", "options": {"A": "External audit", "B": "Internal audit", "C": "Self-assessment only", "D": "Tabletop audit only"}, "answer": "A"}, {"question": "Which term means an auditor provides an opinion about the accuracy of a company’s security posture?", "options": {"A": "Attestation", "B": "Exfiltration", "C": "Federation", "D": "Impersonation"}, "answer": "A"}, {"question": "Which penetration testing perspective represents attackers attempting to find and exploit weaknesses?", "options": {"A": "Red team", "B": "Blue team", "C": "Help desk", "D": "Audit committee"}, "answer": "A"}, {"question": "Which penetration testing perspective focuses on detecting and defending against attacks?", "options": {"A": "Blue team", "B": "Red team", "C": "Data subject", "D": "Vendor"}, "answer": "A"}, {"question": "Which penetration testing knowledge level gives the tester full disclosure of the environment?", "options": {"A": "Known environment", "B": "Unknown environment", "C": "Blind test", "D": "Passive-only test"}, "answer": "A"}, {"question": "Which training topic helps users recognize suspicious emails, social engineering, and unsafe behavior?", "options": {"A": "Security awareness training", "B": "Database normalization", "C": "Load balancing", "D": "RAID configuration"}, "answer": "A"}];
+    const selected = new Array(questions.length).fill("");
+
+    const quizForm = document.getElementById("quizForm");
+    const quizTitle = document.getElementById("quizTitle");
+    const quizCodeElement = document.getElementById("quizCode");
+    const startPanel = document.getElementById("startPanel");
+    const startTitle = document.getElementById("startTitle");
+    const startCode = document.getElementById("startCode");
+    const startTotal = document.getElementById("startTotal");
+    const actionsPanel = document.getElementById("actionsPanel");
+    const answeredCount = document.getElementById("answeredCount");
+    const totalCount = document.getElementById("totalCount");
+    const timerText = document.getElementById("timerText");
+    const scoreText = document.getElementById("scoreText");
+    const exportText = document.getElementById("exportText");
+    let startedAt = null;
+    let elapsedSeconds = 0;
+    let timerId = null;
+
+    quizTitle.textContent = quizName;
+    quizCodeElement.textContent = quizCode;
+    startTitle.textContent = quizName;
+    startCode.textContent = quizCode;
+    startTotal.textContent = questions.length;
+    totalCount.textContent = questions.length;
+
+    function renderQuiz() {
+      quizForm.innerHTML = questions.map((item, index) => {
+        const questionNumber = index + 1;
+        const options = ["A", "B", "C", "D"].map(letter => `
+          <label class="option" data-question="${index}" data-choice="${letter}">
+            <input type="radio" name="q${index}" value="${letter}">
+            <span><strong>${letter}.</strong> ${escapeHtml(item.options[letter])}</span>
+          </label>
+        `).join("");
+
+        return `
+          <article class="question" id="question-${questionNumber}">
+            <div class="question-title">
+              <span class="number">${questionNumber}.</span>
+              <span>${escapeHtml(item.question)}</span>
+            </div>
+            <div class="options">${options}</div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function updateAnsweredCount() {
+      answeredCount.textContent = selected.filter(Boolean).length;
+    }
+
+    function formatDuration(totalSeconds) {
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      return [hours, minutes, seconds]
+        .map(value => String(value).padStart(2, "0"))
+        .join(":");
+    }
+
+    function updateTimer() {
+      if (!startedAt) {
+        return;
+      }
+      elapsedSeconds = Math.floor((Date.now() - startedAt) / 1000);
+      timerText.textContent = formatDuration(elapsedSeconds);
+    }
+
+    function resetTimer() {
+      startedAt = null;
+      elapsedSeconds = 0;
+      timerText.textContent = "00:00:00";
+      if (timerId) {
+        clearInterval(timerId);
+        timerId = null;
+      }
+    }
+
+    function startQuiz() {
+      startPanel.classList.add("hidden");
+      quizForm.classList.remove("hidden");
+      actionsPanel.classList.remove("hidden");
+      startedAt = Date.now();
+      updateTimer();
+      timerId = setInterval(updateTimer, 1000);
+    }
+
+    function clearMarks() {
+      document.querySelectorAll(".option").forEach(option => {
+        option.classList.remove("selected", "correct", "wrong");
+      });
+    }
+
+    function gradeQuiz() {
+      let correct = 0;
+      clearMarks();
+
+      questions.forEach((item, index) => {
+        const answer = item.answer;
+        const choice = selected[index];
+        const correctOption = document.querySelector(`[data-question="${index}"][data-choice="${answer}"]`);
+        correctOption.classList.add("correct");
+
+        if (choice === answer) {
+          correct += 1;
+        } else if (choice) {
+          const wrongOption = document.querySelector(`[data-question="${index}"][data-choice="${choice}"]`);
+          wrongOption.classList.add("wrong");
+        }
+      });
+
+      scoreText.textContent = `Điểm: ${correct}/${questions.length} (${Math.round(correct / questions.length * 100)}%)`;
+      return correct;
+    }
+
+    function buildExportString() {
+      const correct = questions.reduce((count, item, index) => (
+        count + (selected[index] === item.answer ? 1 : 0)
+      ), 0);
+
+      const answers = selected.map((choice, index) => `${index + 1}:${choice || "-"}`).join(",");
+      const wrong = questions
+        .map((item, index) => selected[index] === item.answer ? "" : `${index + 1}:${selected[index] || "-"}>${item.answer}`)
+        .filter(Boolean)
+        .join(",");
+
+      updateTimer();
+      return `quiz=${quizName};code=${quizCode};score=${correct}/${questions.length};time=${formatDuration(elapsedSeconds)};seconds=${elapsedSeconds};answers=${answers};wrong=${wrong || "none"}`;
+    }
+
+    quizForm.addEventListener("change", event => {
+      if (!event.target.matches('input[type="radio"]')) return;
+
+      const index = Number(event.target.name.replace("q", ""));
+      selected[index] = event.target.value;
+
+      document.querySelectorAll(`[data-question="${index}"]`).forEach(option => {
+        option.classList.toggle("selected", option.dataset.choice === selected[index]);
+        option.classList.remove("correct", "wrong");
+      });
+
+      scoreText.textContent = "";
+      updateAnsweredCount();
+    });
+
+    document.getElementById("gradeButton").addEventListener("click", gradeQuiz);
+    document.getElementById("startButton").addEventListener("click", startQuiz);
+
+    document.getElementById("exportButton").addEventListener("click", () => {
+      gradeQuiz();
+      exportText.value = buildExportString();
+      exportText.focus();
+      exportText.select();
+    });
+
+    document.getElementById("copyButton").addEventListener("click", async () => {
+      if (!exportText.value) {
+        exportText.value = buildExportString();
+      }
+
+      exportText.focus();
+      exportText.select();
+
+      try {
+        await navigator.clipboard.writeText(exportText.value);
+        scoreText.textContent = "Đã copy chuỗi kết quả.";
+      } catch {
+        document.execCommand("copy");
+        scoreText.textContent = "Đã chọn chuỗi kết quả, bạn có thể copy thủ công nếu trình duyệt chặn.";
+      }
+    });
+
+    document.getElementById("resetButton").addEventListener("click", () => {
+      selected.fill("");
+      quizForm.reset();
+      clearMarks();
+      scoreText.textContent = "";
+      exportText.value = "";
+      updateAnsweredCount();
+      resetTimer();
+      startPanel.classList.remove("hidden");
+      quizForm.classList.add("hidden");
+      actionsPanel.classList.add("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    renderQuiz();
+    updateAnsweredCount();
+    resetTimer();
+  </script>
+</body>
+</html>

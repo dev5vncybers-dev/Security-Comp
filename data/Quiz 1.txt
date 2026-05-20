@@ -1,0 +1,999 @@
+1.
+
+Which control category includes firewalls, antivirus, and operating system access controls?
+
+A. Physical
+B. Technical
+C. Operational
+D. Managerial
+
+2.
+
+Which control type is designed to discourage an attacker but may not directly block access?
+
+A. Corrective
+B. Detective
+C. Deterrent
+D. Compensating
+
+3.
+
+Which part of the CIA triad ensures that systems and data are accessible when needed?
+
+A. Confidentiality
+B. Integrity
+C. Availability
+D. Non-repudiation
+
+4.
+
+Which concept provides proof that a user cannot deny performing an action?
+
+A. Authorization
+B. Non-repudiation
+C. Obfuscation
+D. Availability
+
+5.
+
+In the AAA framework, which function determines what resources a user can access?
+
+A. Accounting
+B. Authentication
+C. Authorization
+D. Identification
+
+6.
+
+A company compares its current security posture against a desired baseline. What is this process called?
+
+A. Threat hunting
+B. Gap analysis
+C. Tokenization
+D. Risk transference
+
+7.
+
+Which Zero Trust principle is MOST accurate?
+
+A. Trust internal users by default
+B. Verify every access request continuously
+C. Disable monitoring after authentication
+D. Replace identity controls with firewalls
+
+8.
+
+Which physical control is designed to stop vehicles from entering a restricted area?
+
+A. Bollard
+B. CCTV
+C. Access badge
+D. Motion sensor
+
+9.
+
+A fake file named passwords.xlsx is placed on a file share to alert security when accessed. What is this?
+
+A. Honeypot
+B. Honeyfile
+C. Honeynet
+D. Honeytoken
+
+10.
+
+Which cryptographic concept uses one key for encryption and the same key for decryption?
+
+A. Asymmetric encryption
+B. Symmetric encryption
+C. Hashing
+D. Digital signature
+
+11.
+
+Which technology securely stores cryptographic keys in hardware on a device and is commonly used with full-disk encryption?
+
+A. TPM
+B. IDS
+C. VLAN
+D. WAF
+
+12.
+
+Which cryptographic technique converts data into a fixed-length value to verify integrity?
+
+A. Hashing
+B. Tokenization
+C. Salting
+D. Steganography
+
+13.
+
+Which threat actor is MOST likely motivated by political or ideological beliefs?
+
+A. Script kiddie
+B. Hacktivist
+C. Insider threat
+D. Shadow IT
+
+14.
+
+Which attack vector uses text messages to trick users into clicking malicious links?
+
+A. Vishing
+B. Smishing
+C. Whaling
+D. Watering hole
+
+15.
+
+A user receives a fake invoice email containing a malicious attachment. What vector is being used?
+
+A. Message-based
+B. Physical
+C. Supply chain
+D. Wireless
+
+16.
+
+Which vulnerability occurs when a program writes more data to memory than the allocated space allows?
+
+A. Race condition
+B. Buffer overflow
+C. Malicious update
+D. VM escape
+
+17.
+
+Which attack injects malicious database queries into an application input field?
+
+A. XSS
+B. SQL injection
+C. CSRF
+D. Directory traversal
+
+18.
+
+Which attack injects malicious scripts into web pages viewed by other users?
+
+A. Cross-site scripting
+B. Replay attack
+C. DNS poisoning
+D. Privilege escalation
+
+19.
+
+Which virtualization vulnerability allows code to break out of a guest VM and affect the host?
+
+A. Resource reuse
+B. VM escape
+C. Jailbreaking
+D. Side loading
+
+20.
+
+Which type of vulnerability is publicly unknown and has no available patch at the time of discovery?
+
+A. Legacy vulnerability
+B. End-of-life vulnerability
+C. Zero-day vulnerability
+D. Misconfiguration
+
+21.
+
+Which malware encrypts files and demands payment for recovery?
+
+A. Worm
+B. Trojan
+C. Ransomware
+D. Rootkit
+
+22.
+
+Which malware hides itself deeply in the operating system to maintain privileged access?
+
+A. Rootkit
+B. Logic bomb
+C. Bloatware
+D. Worm
+
+23.
+
+Which attack uses many compromised devices to overwhelm a target service?
+
+A. Replay attack
+B. DDoS
+C. Credential stuffing
+D. Birthday attack
+
+24.
+
+An attacker captures a valid authentication token and reuses it later. What attack is this?
+
+A. Replay
+B. Buffer overflow
+C. Smishing
+D. DNSSEC
+
+25.
+
+Which attack attempts a small set of common passwords across many user accounts?
+
+A. Brute force
+B. Password spraying
+C. Credential stuffing
+D. Rainbow table
+
+26.
+
+Which attack uses credentials leaked from another service to attempt login?
+
+A. Credential stuffing
+B. ARP spoofing
+C. Evil twin
+D. Birthday attack
+
+27.
+
+Which indicator could suggest account compromise based on geographically impossible login locations?
+
+A. Blocked content
+B. Impossible travel
+C. Missing patches
+D. Open service ports
+
+28.
+
+Which mitigation technique divides a network to limit lateral movement?
+
+A. Segmentation
+B. Salting
+C. Steganography
+D. Key escrow
+
+29.
+
+Which mitigation technique ensures users have only the permissions required for their job?
+
+A. Least privilege
+B. Risk transfer
+C. Job rotation
+D. Data masking
+
+30.
+
+Which mitigation technique allows only approved applications to execute?
+
+A. Application allow list
+B. DNS filtering
+C. NAT
+D. Port mirroring
+
+31.
+
+Which hardening action reduces risk by removing unused services from a system?
+
+A. Enabling default credentials
+B. Disabling unnecessary ports and protocols
+C. Increasing session timeout
+D. Using shared admin accounts
+
+32.
+
+Which attack tricks users by registering domains similar to legitimate domains?
+
+A. Typosquatting
+B. Watering hole
+C. Vishing
+D. Tailgating
+
+33.
+
+Which attack compromises a site commonly visited by the target group?
+
+A. Watering hole
+B. Credential replay
+C. Birthday attack
+D. Password spraying
+
+34.
+
+Which attack manipulates DNS records or responses to redirect users?
+
+A. DNS poisoning
+B. Directory traversal
+C. Buffer overflow
+D. On-path attack
+
+35.
+
+Which cloud model gives the customer control over the operating system while the provider manages physical hardware and virtualization?
+
+A. SaaS
+B. PaaS
+C. IaaS
+D. FaaS
+
+36.
+
+Which architecture relies on code-based definitions to deploy and manage infrastructure?
+
+A. Infrastructure as Code
+B. Air gap
+C. RTOS
+D. Hot site
+
+37.
+
+Which architecture model runs application functions without the customer managing servers directly?
+
+A. Serverless
+B. On-premises
+C. Air-gapped
+D. Legacy
+
+38.
+
+Which network design physically separates systems from other networks?
+
+A. SDN
+B. Air gap
+C. VLAN
+D. SASE
+
+39.
+
+Which technology allows multiple operating systems to run on one physical host?
+
+A. Virtualization
+B. Tokenization
+C. Hashing
+D. DNSSEC
+
+40.
+
+Which technology packages applications and dependencies into isolated runtime environments?
+
+A. Containerization
+B. RAID
+C. NAT
+D. SNMP
+
+41.
+
+Which environment is commonly associated with industrial control systems?
+
+A. SCADA
+B. OAuth
+C. DMARC
+D. CVSS
+
+42.
+
+Which concept means a system continues operating even if one component fails?
+
+A. Fault tolerance
+B. Obfuscation
+C. Federation
+D. Sanitization
+
+43.
+
+Which network appliance distributes traffic across multiple servers?
+
+A. Load balancer
+B. Proxy server
+C. Jump server
+D. SIEM
+
+44.
+
+Which appliance is commonly used as a controlled access point for administrators connecting to internal systems?
+
+A. Jump server
+B. DHCP server
+C. Honeypot
+D. Load balancer
+
+45.
+
+Which firewall type is specifically designed to protect web applications?
+
+A. WAF
+B. HIPS
+C. HSM
+D. EDR
+
+46.
+
+Which device placement allows a security device to actively block malicious traffic?
+
+A. Tap mode
+B. Inline mode
+C. Passive monitoring
+D. Out-of-band logging
+
+47.
+
+Which access control standard is commonly used for port-based network access control?
+
+A. 802.1X
+B. WPA2
+C. SNMPv3
+D. TLS
+
+48.
+
+Which protocol is commonly used to create encrypted site-to-site VPNs?
+
+A. IPsec
+B. FTP
+C. Telnet
+D. POP3
+
+49.
+
+Which data state describes data actively being processed in memory?
+
+A. Data at rest
+B. Data in transit
+C. Data in use
+D. Archived data
+
+50.
+
+Which data protection method replaces sensitive data with a non-sensitive substitute value?
+
+A. Tokenization
+B. Hash collision
+C. Key stretching
+D. Fail-open
+
+51.
+
+Which site type is fully operational and can take over quickly after a disaster?
+
+A. Cold site
+B. Warm site
+C. Hot site
+D. Archive site
+
+52.
+
+Which backup method captures a point-in-time image of a system or volume?
+
+A. Snapshot
+B. Differential backup
+C. Journaling
+D. Clustering
+
+53.
+
+Which process establishes a secure configuration standard for systems?
+
+A. Secure baseline
+B. Risk acceptance
+C. Tailgating
+D. Data sovereignty
+
+54.
+
+Which mobile deployment model allows employees to use their personal devices for work?
+
+A. COPE
+B. BYOD
+C. CYOD
+D. VDI
+
+55.
+
+Which mobile deployment model gives employees a choice from approved corporate devices?
+
+A. BYOD
+B. CYOD
+C. COPE
+D. Shadow IT
+
+56.
+
+Which wireless security protocol is currently preferred for modern Wi-Fi networks?
+
+A. WEP
+B. WPA
+C. WPA2 only
+D. WPA3
+
+57.
+
+Which application security technique checks user input before processing it?
+
+A. Input validation
+B. Open relay
+C. Port forwarding
+D. NAT
+
+58.
+
+Which application security technique verifies that software has not been altered and comes from a trusted publisher?
+
+A. Code signing
+B. Sandboxing
+C. Tokenization
+D. Packet filtering
+
+59.
+
+Which method analyzes source code without running the application?
+
+A. Static analysis
+B. Dynamic analysis
+C. Fuzzing only
+D. Runtime detection
+
+60.
+
+Which method analyzes an application while it is running?
+
+A. Static analysis
+B. Dynamic analysis
+C. Hashing
+D. Data masking
+
+61.
+
+Which asset management phase securely removes data before disposal?
+
+A. Assignment
+B. Procurement
+C. Sanitization
+D. Enumeration
+
+62.
+
+Which vulnerability management activity confirms whether a scan finding is real?
+
+A. Confirmation
+B. Decommissioning
+C. Federation
+D. Masking
+
+63.
+
+Which standard scoring system rates vulnerability severity from 0.0 to 10.0?
+A. CVE
+B. CVSS
+C. CWE
+D. STIX
+
+64.
+
+Which identifier tracks publicly known vulnerabilities?
+
+A. CVE
+B. SLA
+C. SAML
+D. RPO
+
+65.
+
+Which vulnerability remediation action checks whether a patch actually fixed the issue?
+
+A. Rescanning
+B. Risk transfer
+C. Side loading
+D. DNS filtering
+
+66.
+
+Which tool aggregates logs and helps correlate security events?
+
+A. SIEM
+B. VPN
+C. RAID
+D. DHCP
+
+67.
+
+Which tool captures network flow metadata such as source, destination, and volume?
+
+A. NetFlow
+B. TPM
+C. HSM
+D. SAML
+
+68.
+
+Which security tool helps prevent sensitive data from leaving the organization?
+
+A. DLP
+B. DHCP
+C. DNSSEC
+D. NAT
+
+69.
+
+Which email security mechanism specifies which mail servers are authorized to send email for a domain?
+
+A. SPF
+B. IMAP
+C. POP3
+D. SNMP
+
+70.
+
+Which email security mechanism uses cryptographic signatures to verify email authenticity?
+
+A. DKIM
+B. FTP
+C. LDAP
+D. Telnet
+
+71.
+
+Which email security framework builds on SPF and DKIM to define handling and reporting policies?
+
+A. DMARC
+B. RADIUS
+C. TACACS+
+D. SFTP
+
+72.
+
+Which endpoint security tool focuses on detecting and responding to endpoint threats?
+
+A. EDR
+B. DNS
+C. RAID
+D. NAT
+
+73.
+
+Which solution extends detection and response across endpoints, networks, cloud, and other sources?
+
+A. XDR
+B. WEP
+C. FTP
+D. VLAN
+
+74.
+
+Which IAM process creates new user accounts and assigns initial access?
+
+A. Provisioning
+B. De-provisioning
+C. Sanitization
+D. Obfuscation
+
+75.
+
+Which IAM process removes access when a user leaves the organization?
+
+A. De-provisioning
+B. Federation
+C. Tokenization
+D. Hashing
+
+76.
+
+Which access control model assigns permissions based on job roles?
+
+A. DAC
+B. MAC
+C. RBAC
+D. ABAC
+
+77.
+
+Which access control model uses labels such as Secret and Top Secret?
+
+A. DAC
+B. MAC
+C. RBAC
+D. Rule-based access control
+
+78.
+
+Which access control model uses environmental or user attributes such as time, location, and department?
+
+A. ABAC
+B. MAC
+C. DAC
+D. Mandatory vacation
+
+79.
+
+Which authentication factor is represented by a fingerprint?
+
+A. Something you know
+B. Something you have
+C. Something you are
+D. Somewhere you are
+
+80.
+
+Which authentication factor is represented by a hardware security key?
+
+A. Something you know
+B. Something you have
+C. Something you are
+D. Something you do
+
+81.
+
+Which automation benefit helps ensure all systems are deployed with the same approved configuration?
+
+A. Enforcing baselines
+B. Increasing password reuse
+C. Disabling logging
+D. Reducing segmentation
+
+82.
+
+Which incident response phase focuses on preparing plans, tools, roles, and training before an incident?
+
+A. Preparation
+B. Containment
+C. Eradication
+D. Recovery
+
+83.
+
+Which incident response phase focuses on determining whether an event is a true incident?
+
+A. Detection and analysis
+B. Recovery
+C. Lessons learned
+D. Sanitization
+
+84.
+
+Which incident response phase limits damage and prevents spread?
+
+A. Containment
+B. Preparation
+C. Recovery
+D. Reporting
+
+85.
+
+Which incident response phase removes malware, attacker access, or exploited vulnerabilities?
+
+A. Recovery
+B. Eradication
+C. Lessons learned
+D. Reconnaissance
+
+86.
+
+Which incident response phase restores normal operations?
+
+A. Recovery
+B. Detection
+C. Containment
+D. Preparation
+
+87.
+
+Which activity after an incident identifies improvements for future response?
+
+A. Lessons learned
+B. Credential stuffing
+C. Exploitation
+D. Fail-open
+
+88.
+
+Which forensic process documents who handled evidence and when?
+
+A. Chain of custody
+B. Federation
+C. Clustering
+D. Secure boot
+
+89.
+
+Which forensic action creates an exact copy of storage media for analysis?
+
+A. Imaging
+B. Sanitization
+C. Tokenization
+D. Segmentation
+
+90.
+
+Which value verifies that forensic evidence has not changed?
+
+A. Hash value
+B. IP address
+C. MAC address
+D. VLAN ID
+
+91.
+
+Which log source is MOST useful for investigating successful and failed sign-in attempts?
+
+A. Authentication logs
+B. Printer logs
+C. DHCP lease duration only
+D. Power usage logs
+
+92.
+
+Which governance document defines acceptable use of company systems?
+
+A. AUP
+B. NDA
+C. SLA
+D. MOU
+
+93.
+
+Which agreement defines service uptime, availability, and support response expectations?
+
+A. NDA
+B. SLA
+C. AUP
+D. BPA
+
+94.
+
+Which agreement protects confidential information shared between parties?
+
+A. NDA
+B. SLA
+C. MOU
+D. ARO
+
+95.
+
+Which role determines the purpose and means of processing personal data?
+
+A. Data controller
+B. Data processor
+C. Data subject
+D. Threat actor
+
+96.
+
+Which role processes personal data on behalf of another organization or group?
+
+A. Data processor
+B. Data owner
+C. Security guard
+D. Certificate authority
+
+97.
+
+Which risk response stops the risky activity entirely?
+
+A. Risk avoidance
+B. Risk acceptance
+C. Risk transfer
+D. Risk mitigation
+
+98.
+
+Which risk response uses cyber insurance?
+
+A. Risk avoidance
+B. Risk transference
+C. Risk rejection
+D. Risk escalation
+
+99.
+
+Which risk metric estimates the monetary loss from a single event?
+
+A. SLE
+B. ARO
+C. MTTR
+D. RTO
+
+100.
+
+Which business continuity metric defines the maximum acceptable time to restore a system?
+
+A. RPO
+B. RTO
+C. MTBF
+D. EF
+
+B
+C
+C
+B
+C
+B
+B
+A
+B
+B
+A
+A
+B
+B
+A
+B
+B
+A
+B
+C
+C
+A
+B
+A
+B
+A
+B
+A
+A
+A
+B
+A
+A
+A
+C
+A
+A
+B
+A
+A
+A
+A
+A
+A
+A
+B
+A
+A
+C
+A
+C
+A
+A
+B
+B
+D
+A
+A
+A
+B
+C
+A
+B
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+C
+B
+A
+C
+B
+A
+A
+A
+A
+B
+A
+A
+A
+A
+A
+A
+A
+B
+A
+A
+A
+A
+B
+A
+B

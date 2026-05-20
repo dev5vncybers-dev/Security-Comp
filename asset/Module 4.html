@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Module 4 - 967872</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #1f2933;
+      --muted: #667085;
+      --line: #d6dbe3;
+      --accent: #2563eb;
+      --accent-soft: #e8f0ff;
+      --ok: #15803d;
+      --bad: #b42318;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .bar {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 14px 18px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .status {
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .question {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .start-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+
+    .start-panel h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+
+    .start-panel p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .question-title {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .number {
+      flex: 0 0 auto;
+      min-width: 34px;
+      color: var(--accent);
+    }
+
+    .options {
+      display: grid;
+      gap: 8px;
+    }
+
+    label.option {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 10px 12px;
+      cursor: pointer;
+      background: #fff;
+    }
+
+    label.option:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    label.option.selected {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    label.option.correct {
+      border-color: var(--ok);
+      background: #eaf8ef;
+    }
+
+    label.option.wrong {
+      border-color: var(--bad);
+      background: #fff0ee;
+    }
+
+    input[type="radio"] {
+      margin-top: 4px;
+    }
+
+    .actions {
+      position: sticky;
+      bottom: 0;
+      background: rgba(246, 247, 249, 0.96);
+      border-top: 1px solid var(--line);
+      padding: 14px 0;
+      margin-top: 20px;
+    }
+
+    .actions-inner {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      border-radius: 7px;
+      padding: 10px 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: #fff;
+      color: var(--accent);
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 110px;
+      margin-top: 12px;
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 13px;
+      resize: vertical;
+    }
+
+    .result {
+      margin-top: 12px;
+      font-weight: 700;
+    }
+
+    @media (max-width: 640px) {
+      .bar {
+        align-items: flex-start;
+      }
+
+      h1 {
+        font-size: 18px;
+      }
+
+      .question {
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="bar">
+      <h1 id="quizTitle">Security Quiz</h1>
+      <div class="status">
+        <span>Code: <strong id="quizCode"></strong></span>
+        <span><span id="answeredCount">0</span>/<span id="totalCount">0</span> answered</span>
+        <span>Time: <strong id="timerText">00:00:00</strong></span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="start-panel" id="startPanel">
+      <h2 id="startTitle"></h2>
+      <p>Ma de: <strong id="startCode"></strong> · So cau: <strong id="startTotal"></strong></p>
+      <button type="button" id="startButton">Bat dau lam bai</button>
+    </section>
+
+    <form id="quizForm" class="hidden"></form>
+
+    <section class="actions hidden" id="actionsPanel">
+      <div class="actions-inner">
+        <button type="button" id="gradeButton">Chấm bài</button>
+        <button type="button" class="secondary" id="exportButton">Xuất chuỗi kết quả</button>
+        <button type="button" class="secondary" id="copyButton">Copy chuỗi</button>
+        <button type="button" class="secondary" id="resetButton">Làm lại</button>
+      </div>
+      <div class="result" id="scoreText"></div>
+      <textarea id="exportText" readonly placeholder="Chuỗi kết quả sẽ hiện ở đây sau khi bấm Xuất chuỗi kết quả."></textarea>
+    </section>
+  </main>
+
+  <script>
+    const quizName = "Module 4";
+    const quizCode = "967872";
+    const questions = [{"question": "Which process defines an approved secure configuration for systems?", "options": {"A": "Secure baseline", "B": "Risk transference", "C": "Data masking", "D": "Chain of custody"}, "answer": "A"}, {"question": "Which phase of secure baselines involves creating the initial approved configuration?", "options": {"A": "Establish", "B": "Eradicate", "C": "Transfer", "D": "Archive"}, "answer": "A"}, {"question": "Which phase of secure baselines applies the approved configuration to systems?", "options": {"A": "Deploy", "B": "Exfiltrate", "C": "Revoke", "D": "Enumerate"}, "answer": "A"}, {"question": "Which phase of secure baselines keeps systems aligned with the approved configuration over time?", "options": {"A": "Maintain", "B": "Delete", "C": "Transfer", "D": "Outsource"}, "answer": "A"}, {"question": "Which hardening target includes laptops and desktop computers?", "options": {"A": "Workstations", "B": "Certificate authorities", "C": "SIEM rules", "D": "Data subjects"}, "answer": "A"}, {"question": "Which hardening target includes network devices that forward traffic between networks?", "options": {"A": "Routers", "B": "Hash values", "C": "Tokens", "D": "Legal holds"}, "answer": "A"}, {"question": "Which hardening target is commonly associated with industrial environments?", "options": {"A": "ICS/SCADA", "B": "OAuth", "C": "DMARC", "D": "SAML"}, "answer": "A"}, {"question": "Which hardening action reduces attack surface by removing unused applications?", "options": {"A": "Remove unnecessary software", "B": "Use default passwords", "C": "Open all ports", "D": "Disable logging"}, "answer": "A"}, {"question": "Which hardening action reduces risk from unnecessary network services?", "options": {"A": "Disable unused ports and protocols", "B": "Increase user privileges", "C": "Share admin passwords", "D": "Disable endpoint protection"}, "answer": "A"}, {"question": "Which hardening action protects endpoints from malware?", "options": {"A": "Install endpoint protection", "B": "Disable host firewalls", "C": "Remove authentication", "D": "Allow all applications"}, "answer": "A"}, {"question": "Which tool controls and manages mobile devices in an enterprise?", "options": {"A": "MDM", "B": "HSM", "C": "IDS", "D": "TPM"}, "answer": "A"}, {"question": "Which mobile deployment model allows employees to use personal devices for work?", "options": {"A": "BYOD", "B": "COPE", "C": "CYOD", "D": "VDI"}, "answer": "A"}, {"question": "Which mobile deployment model provides company-owned devices that employees may also use personally?", "options": {"A": "COPE", "B": "BYOD", "C": "CYOD", "D": "RTOS"}, "answer": "A"}, {"question": "Which mobile deployment model allows employees to choose from approved company devices?", "options": {"A": "CYOD", "B": "BYOD", "C": "Honeynet", "D": "SASE"}, "answer": "A"}, {"question": "Which wireless planning activity identifies signal coverage and interference?", "options": {"A": "Site survey", "B": "Key escrow", "C": "Legal hold", "D": "Risk register"}, "answer": "A"}, {"question": "Which wireless planning tool visually maps signal strength in an area?", "options": {"A": "Heat map", "B": "Hash map", "C": "Access list", "D": "Certificate chain"}, "answer": "A"}, {"question": "Which modern Wi-Fi security standard is preferred for strong wireless protection?", "options": {"A": "WPA3", "B": "WEP", "C": "WPA", "D": "Open authentication"}, "answer": "A"}, {"question": "Which protocol is commonly used for centralized authentication in enterprise Wi-Fi?", "options": {"A": "RADIUS", "B": "FTP", "C": "Telnet", "D": "POP3"}, "answer": "A"}, {"question": "Which application security practice checks input before it is processed?", "options": {"A": "Input validation", "B": "Open relay", "C": "Port forwarding", "D": "Data exfiltration"}, "answer": "A"}, {"question": "Which application security feature helps protect session identifiers in browsers?", "options": {"A": "Secure cookies", "B": "Default credentials", "C": "Open ports", "D": "Public shares"}, "answer": "A"}, {"question": "Which testing method analyzes source code without running the application?", "options": {"A": "Static code analysis", "B": "Dynamic analysis", "C": "Packet capture", "D": "Full backup"}, "answer": "A"}, {"question": "Which testing method analyzes the application while it is running?", "options": {"A": "Dynamic analysis", "B": "Static analysis", "C": "Hashing", "D": "Tokenization"}, "answer": "A"}, {"question": "Which technique runs suspicious code in an isolated environment?", "options": {"A": "Sandboxing", "B": "Federation", "C": "Replication", "D": "Clustering"}, "answer": "A"}, {"question": "Which asset management phase involves purchasing or obtaining systems?", "options": {"A": "Acquisition/procurement", "B": "Lessons learned", "C": "Credential stuffing", "D": "Legal hold"}, "answer": "A"}, {"question": "Which asset management concept identifies who is responsible for an asset?", "options": {"A": "Ownership", "B": "Collision", "C": "Replay", "D": "Evasion"}, "answer": "A"}, {"question": "Which asset management concept identifies the sensitivity or importance of an asset?", "options": {"A": "Classification", "B": "Load balancing", "C": "Jailbreaking", "D": "Spoofing"}, "answer": "A"}, {"question": "Which asset management activity lists hardware, software, or data assets?", "options": {"A": "Inventory", "B": "Smishing", "C": "Buffer overflow", "D": "Birthday attack"}, "answer": "A"}, {"question": "Which asset management activity discovers and counts assets or services?", "options": {"A": "Enumeration", "B": "Eradication", "C": "Obfuscation", "D": "Risk avoidance"}, "answer": "A"}, {"question": "Which disposal method securely removes data from media?", "options": {"A": "Sanitization", "B": "Federation", "C": "Escalation", "D": "Spraying"}, "answer": "A"}, {"question": "Which disposal method physically renders media unusable?", "options": {"A": "Destruction", "B": "Tokenization", "C": "Provisioning", "D": "Authorization"}, "answer": "A"}, {"question": "Which document proves that disposal or destruction was completed properly?", "options": {"A": "Certificate of destruction", "B": "Certificate signing request", "C": "Public certificate", "D": "Warranty card"}, "answer": "A"}, {"question": "Which policy determines how long data should be kept?", "options": {"A": "Data retention", "B": "Port security", "C": "Input validation", "D": "Threat hunting"}, "answer": "A"}, {"question": "Which vulnerability identification method scans systems for known weaknesses?", "options": {"A": "Vulnerability scan", "B": "Legal hold", "C": "Data masking", "D": "Geofencing"}, "answer": "A"}, {"question": "Which application security method analyzes code before runtime?", "options": {"A": "Static analysis", "B": "DLP", "C": "SPF", "D": "SNMP trap"}, "answer": "A"}, {"question": "Which application security method tests applications during execution?", "options": {"A": "Dynamic analysis", "B": "Hashing", "C": "RAID", "D": "Full backup"}, "answer": "A"}, {"question": "Which activity monitors third-party libraries or dependencies for known vulnerabilities?", "options": {"A": "Package monitoring", "B": "Badge cloning", "C": "Tailgating", "D": "Key exchange"}, "answer": "A"}, {"question": "Which threat intelligence source uses public information?", "options": {"A": "OSINT", "B": "HSM", "C": "TPM", "D": "RAID"}, "answer": "A"}, {"question": "Which threat intelligence source may include paid or vendor-provided feeds?", "options": {"A": "Proprietary/third-party feed", "B": "Open wireless network", "C": "Static route", "D": "Default gateway"}, "answer": "A"}, {"question": "Which threat intelligence source may include underground markets and leaked data?", "options": {"A": "Dark web", "B": "Public DNS only", "C": "DHCP pool", "D": "Local printer queue"}, "answer": "A"}, {"question": "Which security program encourages external researchers to report vulnerabilities responsibly?", "options": {"A": "Bug bounty program", "B": "Backup rotation", "C": "Key escrow", "D": "Hot site"}, "answer": "A"}, {"question": "Which vulnerability analysis result means the scanner reported an issue that is not actually present?", "options": {"A": "False positive", "B": "True positive", "C": "False negative", "D": "True negative"}, "answer": "A"}, {"question": "Which vulnerability analysis result means the scanner missed a real issue?", "options": {"A": "False negative", "B": "False positive", "C": "True positive", "D": "True negative"}, "answer": "A"}, {"question": "Which vulnerability scoring system rates severity from 0.0 to 10.0?", "options": {"A": "CVSS", "B": "CVE", "C": "SAML", "D": "SPF"}, "answer": "A"}, {"question": "Which identifier tracks publicly known vulnerabilities?", "options": {"A": "CVE", "B": "SLA", "C": "RPO", "D": "SSO"}, "answer": "A"}, {"question": "Which factor helps prioritize vulnerabilities based on business impact?", "options": {"A": "Industry or organizational impact", "B": "Keyboard layout", "C": "Monitor resolution", "D": "Printer type"}, "answer": "A"}, {"question": "Which remediation action applies software updates to fix vulnerabilities?", "options": {"A": "Patching", "B": "Phishing", "C": "Spoofing", "D": "Tailgating"}, "answer": "A"}, {"question": "Which remediation action reduces impact by separating vulnerable systems?", "options": {"A": "Segmentation", "B": "Smishing", "C": "Credential stuffing", "D": "Replay"}, "answer": "A"}, {"question": "Which remediation option is used when the primary fix is not immediately possible?", "options": {"A": "Compensating control", "B": "Data subject request", "C": "Public key", "D": "Wireless heat map"}, "answer": "A"}, {"question": "Which process confirms that remediation fixed the vulnerability?", "options": {"A": "Validation of remediation", "B": "Typosquatting", "C": "Data exfiltration", "D": "Shadow IT"}, "answer": "A"}, {"question": "Which validation method scans again after a fix is applied?", "options": {"A": "Rescanning", "B": "Whaling", "C": "Tokenization", "D": "Watering hole"}, "answer": "A"}, {"question": "Which tool aggregates and correlates security logs from many sources?", "options": {"A": "SIEM", "B": "VPN", "C": "RAID", "D": "DHCP"}, "answer": "A"}, {"question": "Which monitoring activity stores logs for future review or compliance?", "options": {"A": "Archiving", "B": "Side loading", "C": "Jailbreaking", "D": "Federation"}, "answer": "A"}, {"question": "Which monitoring activity reduces false alerts by adjusting detection rules?", "options": {"A": "Alert tuning", "B": "Key stretching", "C": "Data masking", "D": "Port knocking"}, "answer": "A"}, {"question": "Which response action isolates a suspicious file or system?", "options": {"A": "Quarantine", "B": "Repudiation", "C": "Data sovereignty", "D": "Deregulation"}, "answer": "A"}, {"question": "Which protocol can send traps from devices to a monitoring system?", "options": {"A": "SNMP", "B": "FTP", "C": "Telnet", "D": "POP3"}, "answer": "A"}, {"question": "Which SNMP port is commonly used for polling?", "options": {"A": "UDP 161", "B": "TCP 443", "C": "TCP 3389", "D": "UDP 53"}, "answer": "A"}, {"question": "Which SNMP port is commonly used for traps?", "options": {"A": "UDP 162", "B": "TCP 22", "C": "TCP 25", "D": "UDP 123"}, "answer": "A"}, {"question": "Which tool summarizes network flow information such as source, destination, and traffic volume?", "options": {"A": "NetFlow", "B": "TPM", "C": "HSM", "D": "OCSP"}, "answer": "A"}, {"question": "Which security tool prevents sensitive information from leaving an organization?", "options": {"A": "DLP", "B": "DHCP", "C": "DNSSEC", "D": "NAT"}, "answer": "A"}, {"question": "Which firewall concept means traffic is denied unless explicitly allowed?", "options": {"A": "Implicit deny", "B": "Default allow", "C": "Fail-open only", "D": "Open relay"}, "answer": "A"}, {"question": "Which firewall rule order is usually safest?", "options": {"A": "Specific rules before general rules", "B": "General rules before specific rules", "C": "Deny rules never used", "D": "Random order"}, "answer": "A"}, {"question": "Which firewall object allows or blocks traffic based on source, destination, protocol, or port?", "options": {"A": "ACL", "B": "CSR", "C": "RPO", "D": "ARO"}, "answer": "A"}, {"question": "Which port is used by SSH by default?", "options": {"A": "TCP 22", "B": "TCP 80", "C": "UDP 123", "D": "TCP 25"}, "answer": "A"}, {"question": "Which port is used by HTTPS by default?", "options": {"A": "TCP 443", "B": "TCP 23", "C": "UDP 161", "D": "TCP 110"}, "answer": "A"}, {"question": "Which port is used by RDP by default?", "options": {"A": "TCP 3389", "B": "TCP 53", "C": "UDP 67", "D": "TCP 993"}, "answer": "A"}, {"question": "Which web filtering feature checks URLs against categories or reputation?", "options": {"A": "URL scanning/content categorization", "B": "Disk encryption", "C": "Key escrow", "D": "Certificate pinning only"}, "answer": "A"}, {"question": "Which operating system security framework is commonly associated with Linux mandatory access controls?", "options": {"A": "SELinux", "B": "BitLocker", "C": "FileVault", "D": "WPA3"}, "answer": "A"}, {"question": "Which Windows feature centrally manages security and configuration settings in a domain?", "options": {"A": "Group Policy", "B": "NetFlow", "C": "OCSP", "D": "SPF"}, "answer": "A"}, {"question": "Which email security mechanism defines authorized sending servers for a domain?", "options": {"A": "SPF", "B": "POP3", "C": "IMAP", "D": "SNMP"}, "answer": "A"}, {"question": "Which email security mechanism uses cryptographic signatures to verify messages?", "options": {"A": "DKIM", "B": "Telnet", "C": "FTP", "D": "NAT"}, "answer": "A"}, {"question": "Which email security framework uses SPF and DKIM results to define policy and reporting?", "options": {"A": "DMARC", "B": "RADIUS", "C": "TACACS+", "D": "SFTP"}, "answer": "A"}, {"question": "Which endpoint tool detects and responds to threats on endpoints?", "options": {"A": "EDR", "B": "DNS", "C": "RAID", "D": "VLAN"}, "answer": "A"}, {"question": "Which solution extends detection and response across endpoints, networks, cloud, and other telemetry?", "options": {"A": "XDR", "B": "WEP", "C": "FTP", "D": "DHCP"}, "answer": "A"}, {"question": "Which technology analyzes behavior patterns to detect unusual user activity?", "options": {"A": "User behavior analytics", "B": "Static routing", "C": "RAID mirroring", "D": "Wireless roaming"}, "answer": "A"}, {"question": "Which IAM process creates accounts and grants initial access?", "options": {"A": "Provisioning", "B": "Sanitization", "C": "Containment", "D": "Obfuscation"}, "answer": "A"}, {"question": "Which IAM process removes access when a user leaves?", "options": {"A": "De-provisioning", "B": "Federation", "C": "Tokenization", "D": "Salting"}, "answer": "A"}, {"question": "Which IAM process verifies a person’s claimed identity before account creation?", "options": {"A": "Identity proofing", "B": "Key stretching", "C": "Replay", "D": "Port mirroring"}, "answer": "A"}, {"question": "Which IAM concept allows identities from one organization or domain to access resources in another?", "options": {"A": "Federation", "B": "Buffer overflow", "C": "Data masking", "D": "DNS poisoning"}, "answer": "A"}, {"question": "Which IAM feature allows users to authenticate once and access multiple services?", "options": {"A": "SSO", "B": "DLP", "C": "CVSS", "D": "MTBF"}, "answer": "A"}, {"question": "Which protocol is commonly used for directory access and identity queries?", "options": {"A": "LDAP", "B": "SMTP", "C": "FTP", "D": "SNMP"}, "answer": "A"}, {"question": "Which protocol is commonly used for delegated authorization?", "options": {"A": "OAuth", "B": "POP3", "C": "ICMP", "D": "TFTP"}, "answer": "A"}, {"question": "Which protocol is commonly used for federated identity assertions?", "options": {"A": "SAML", "B": "ARP", "C": "NTP", "D": "DNS"}, "answer": "A"}, {"question": "Which access control model uses labels such as Secret and Top Secret?", "options": {"A": "MAC", "B": "DAC", "C": "RBAC", "D": "ABAC"}, "answer": "A"}, {"question": "Which access control model lets the data owner decide permissions?", "options": {"A": "DAC", "B": "MAC", "C": "Rule-based", "D": "Mandatory vacation"}, "answer": "A"}, {"question": "Which access control model assigns permissions based on job function?", "options": {"A": "RBAC", "B": "MAC", "C": "DAC", "D": "Rule-based only"}, "answer": "A"}, {"question": "Which access control model uses conditions such as time, location, role, or device status?", "options": {"A": "ABAC", "B": "MAC", "C": "DAC", "D": "Static ACL only"}, "answer": "A"}, {"question": "Which authentication factor is a password?", "options": {"A": "Something you know", "B": "Something you have", "C": "Something you are", "D": "Somewhere you are"}, "answer": "A"}, {"question": "Which authentication factor is a hardware token?", "options": {"A": "Something you have", "B": "Something you know", "C": "Somewhere you are", "D": "Something you do"}, "answer": "A"}, {"question": "Which authentication factor is a fingerprint?", "options": {"A": "Something you are", "B": "Something you know", "C": "Something you have", "D": "Somewhere you are"}, "answer": "A"}, {"question": "Which privileged access management method grants admin access only when needed?", "options": {"A": "Just-in-time permissions", "B": "Shared administrator accounts", "C": "Default credentials", "D": "Permanent root access"}, "answer": "A"}, {"question": "Which PAM feature stores privileged credentials securely?", "options": {"A": "Password vaulting", "B": "Open relay", "C": "Public share", "D": "Anonymous login"}, "answer": "A"}, {"question": "Which automation use case creates accounts automatically based on predefined workflows?", "options": {"A": "User provisioning", "B": "Evil twin", "C": "SQL injection", "D": "DNS poisoning"}, "answer": "A"}, {"question": "Which automation use case creates incidents automatically from alerts?", "options": {"A": "Ticket creation", "B": "Data masking", "C": "Rainbow table", "D": "Warm site"}, "answer": "A"}, {"question": "Which automation benefit helps deploy systems consistently and securely?", "options": {"A": "Enforcing baselines", "B": "Increasing shadow IT", "C": "Removing all monitoring", "D": "Allowing default passwords"}, "answer": "A"}, {"question": "Which automation risk occurs when an organization keeps delaying a proper long-term fix?", "options": {"A": "Technical debt", "B": "Non-repudiation", "C": "Data sovereignty", "D": "High availability"}, "answer": "A"}, {"question": "Which incident response phase includes plans, contacts, tools, training, and procedures?", "options": {"A": "Preparation", "B": "Recovery", "C": "Lessons learned", "D": "Eradication"}, "answer": "A"}, {"question": "Which incident response phase determines whether an event is a real incident?", "options": {"A": "Detection and analysis", "B": "Recovery", "C": "Sanitization", "D": "Risk transfer"}, "answer": "A"}, {"question": "Which incident response phase limits damage and prevents spread?", "options": {"A": "Containment", "B": "Preparation", "C": "Post-incident activity", "D": "Data retention"}, "answer": "A"}, {"question": "Which incident response phase removes malware, disables breached accounts, and fixes vulnerabilities?", "options": {"A": "Eradication", "B": "Detection", "C": "Preparation", "D": "Reporting"}, "answer": "A"}, {"question": "Which forensic process documents who handled evidence, when, and why?", "options": {"A": "Chain of custody", "B": "Federation", "C": "Tokenization", "D": "Load balancing"}, "answer": "A"}];
+    const selected = new Array(questions.length).fill("");
+
+    const quizForm = document.getElementById("quizForm");
+    const quizTitle = document.getElementById("quizTitle");
+    const quizCodeElement = document.getElementById("quizCode");
+    const startPanel = document.getElementById("startPanel");
+    const startTitle = document.getElementById("startTitle");
+    const startCode = document.getElementById("startCode");
+    const startTotal = document.getElementById("startTotal");
+    const actionsPanel = document.getElementById("actionsPanel");
+    const answeredCount = document.getElementById("answeredCount");
+    const totalCount = document.getElementById("totalCount");
+    const timerText = document.getElementById("timerText");
+    const scoreText = document.getElementById("scoreText");
+    const exportText = document.getElementById("exportText");
+    let startedAt = null;
+    let elapsedSeconds = 0;
+    let timerId = null;
+
+    quizTitle.textContent = quizName;
+    quizCodeElement.textContent = quizCode;
+    startTitle.textContent = quizName;
+    startCode.textContent = quizCode;
+    startTotal.textContent = questions.length;
+    totalCount.textContent = questions.length;
+
+    function renderQuiz() {
+      quizForm.innerHTML = questions.map((item, index) => {
+        const questionNumber = index + 1;
+        const options = ["A", "B", "C", "D"].map(letter => `
+          <label class="option" data-question="${index}" data-choice="${letter}">
+            <input type="radio" name="q${index}" value="${letter}">
+            <span><strong>${letter}.</strong> ${escapeHtml(item.options[letter])}</span>
+          </label>
+        `).join("");
+
+        return `
+          <article class="question" id="question-${questionNumber}">
+            <div class="question-title">
+              <span class="number">${questionNumber}.</span>
+              <span>${escapeHtml(item.question)}</span>
+            </div>
+            <div class="options">${options}</div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function escapeHtml(value) {
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function updateAnsweredCount() {
+      answeredCount.textContent = selected.filter(Boolean).length;
+    }
+
+    function formatDuration(totalSeconds) {
+      const hours = Math.floor(totalSeconds / 3600);
+      const minutes = Math.floor((totalSeconds % 3600) / 60);
+      const seconds = totalSeconds % 60;
+      return [hours, minutes, seconds]
+        .map(value => String(value).padStart(2, "0"))
+        .join(":");
+    }
+
+    function updateTimer() {
+      if (!startedAt) {
+        return;
+      }
+      elapsedSeconds = Math.floor((Date.now() - startedAt) / 1000);
+      timerText.textContent = formatDuration(elapsedSeconds);
+    }
+
+    function resetTimer() {
+      startedAt = null;
+      elapsedSeconds = 0;
+      timerText.textContent = "00:00:00";
+      if (timerId) {
+        clearInterval(timerId);
+        timerId = null;
+      }
+    }
+
+    function startQuiz() {
+      startPanel.classList.add("hidden");
+      quizForm.classList.remove("hidden");
+      actionsPanel.classList.remove("hidden");
+      startedAt = Date.now();
+      updateTimer();
+      timerId = setInterval(updateTimer, 1000);
+    }
+
+    function clearMarks() {
+      document.querySelectorAll(".option").forEach(option => {
+        option.classList.remove("selected", "correct", "wrong");
+      });
+    }
+
+    function gradeQuiz() {
+      let correct = 0;
+      clearMarks();
+
+      questions.forEach((item, index) => {
+        const answer = item.answer;
+        const choice = selected[index];
+        const correctOption = document.querySelector(`[data-question="${index}"][data-choice="${answer}"]`);
+        correctOption.classList.add("correct");
+
+        if (choice === answer) {
+          correct += 1;
+        } else if (choice) {
+          const wrongOption = document.querySelector(`[data-question="${index}"][data-choice="${choice}"]`);
+          wrongOption.classList.add("wrong");
+        }
+      });
+
+      scoreText.textContent = `Điểm: ${correct}/${questions.length} (${Math.round(correct / questions.length * 100)}%)`;
+      return correct;
+    }
+
+    function buildExportString() {
+      const correct = questions.reduce((count, item, index) => (
+        count + (selected[index] === item.answer ? 1 : 0)
+      ), 0);
+
+      const answers = selected.map((choice, index) => `${index + 1}:${choice || "-"}`).join(",");
+      const wrong = questions
+        .map((item, index) => selected[index] === item.answer ? "" : `${index + 1}:${selected[index] || "-"}>${item.answer}`)
+        .filter(Boolean)
+        .join(",");
+
+      updateTimer();
+      return `quiz=${quizName};code=${quizCode};score=${correct}/${questions.length};time=${formatDuration(elapsedSeconds)};seconds=${elapsedSeconds};answers=${answers};wrong=${wrong || "none"}`;
+    }
+
+    quizForm.addEventListener("change", event => {
+      if (!event.target.matches('input[type="radio"]')) return;
+
+      const index = Number(event.target.name.replace("q", ""));
+      selected[index] = event.target.value;
+
+      document.querySelectorAll(`[data-question="${index}"]`).forEach(option => {
+        option.classList.toggle("selected", option.dataset.choice === selected[index]);
+        option.classList.remove("correct", "wrong");
+      });
+
+      scoreText.textContent = "";
+      updateAnsweredCount();
+    });
+
+    document.getElementById("gradeButton").addEventListener("click", gradeQuiz);
+    document.getElementById("startButton").addEventListener("click", startQuiz);
+
+    document.getElementById("exportButton").addEventListener("click", () => {
+      gradeQuiz();
+      exportText.value = buildExportString();
+      exportText.focus();
+      exportText.select();
+    });
+
+    document.getElementById("copyButton").addEventListener("click", async () => {
+      if (!exportText.value) {
+        exportText.value = buildExportString();
+      }
+
+      exportText.focus();
+      exportText.select();
+
+      try {
+        await navigator.clipboard.writeText(exportText.value);
+        scoreText.textContent = "Đã copy chuỗi kết quả.";
+      } catch {
+        document.execCommand("copy");
+        scoreText.textContent = "Đã chọn chuỗi kết quả, bạn có thể copy thủ công nếu trình duyệt chặn.";
+      }
+    });
+
+    document.getElementById("resetButton").addEventListener("click", () => {
+      selected.fill("");
+      quizForm.reset();
+      clearMarks();
+      scoreText.textContent = "";
+      exportText.value = "";
+      updateAnsweredCount();
+      resetTimer();
+      startPanel.classList.remove("hidden");
+      quizForm.classList.add("hidden");
+      actionsPanel.classList.add("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    renderQuiz();
+    updateAnsweredCount();
+    resetTimer();
+  </script>
+</body>
+</html>
